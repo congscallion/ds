@@ -99,6 +99,251 @@ public class SinglyLinkedList {
     }
 
 
+    /**
+     * 删除指定数据
+     *
+     * @param data 被删除的数据
+     * @return true, 成功删除数据； 未找到或失败返回false
+     */
+    public boolean remove(int data) {
+
+        // 被删除节点的前一节点
+        Node prev = null;
+        // 被删除节点
+        Node temp = head;
+
+        // 判断Head节点值是否与被删除数据相等
+        if (Objects.nonNull(temp) && data == temp.data) {
+            head = temp.next;
+            return true;
+        }
+
+        // 被删除的数据不在表头，则遍历链表
+        while (Objects.nonNull(temp) && (data != temp.data)) {
+            prev = temp;
+            temp = temp.next;
+        }
+
+        // 未找到指定数据
+        if (Objects.isNull(temp)) {
+            return false;
+        }
+
+        // 找到被删除的节点， 修改前节点的连接为被删除节点的下一节点
+        prev.next = temp.next;
+
+        return true;
+    }
+
+
+    /**
+     * 删除指定的位置的数据
+     *
+     * @param position 被删除位置
+     * @return true，成功删除数据； 其它，false.
+     */
+    public boolean removeByPosition(int position) {
+
+        // 空链表
+        if (Objects.isNull(head)) {
+            return false;
+        }
+
+        Node temp = head;
+        // 删除表头
+        if (position == 0) {
+            head = temp.next;
+            return true;
+        }
+
+        // 遍历链表， 找到被删除除节点.
+        // 与链表长度相等，最后一次遍历的Node为链尾
+        // 如果超过链表长度，最后一次遍历的Node为链尾下一节点的Null引用
+        for (int i = 0; Objects.nonNull(temp) && i < position - 1; i++) {
+            temp = temp.next;
+        }
+
+        // 排除链表长度之外的位置
+        if (Objects.isNull(temp) || Objects.isNull(temp.next)) {
+            return false;
+        }
+
+        // 被删除节点
+        Node del = temp.next;
+
+        // 被删除节点的下一节点
+        Node next = del.next;
+
+        // 设置新的引用
+        temp.next = next;
+
+        return true;
+
+    }
+
+    /**
+     * 删除整个列表
+     *
+     * 只需要将表头设置为null即可， 剩余节点垃圾回收器自动处理。
+     */
+    public void deleteList() {
+        head = null;
+    }
+
+    /**
+     * 计算链表的长度 即统计一个链表包含节点的数量
+     *
+     * 使用迭代的方式实现
+     */
+    public int getCount() {
+        int count = 0;
+        Node temp = head;
+
+        while (Objects.nonNull(temp)) {
+            count++;
+            temp = temp.next;
+        }
+        return count;
+    }
+
+    /**
+     * 使用递归的方式计算链表的长度
+     */
+    public int getCount2() {
+        return getCount0(head);
+    }
+
+    private int getCount0(Node node) {
+
+        // 跳出递归条件
+        if (Objects.isNull(node)) {
+            return 0;
+        }
+
+        return 1 + getCount0(node.next);
+    }
+
+    /**
+     * 搜索指定值在链表中的位置。 如果链表不包含其值，则返回-1.
+     *
+     * 使用迭代实现
+     */
+    public int indexOf(int data) {
+
+        int position = 0;
+        Node temp = head;
+
+        // 空链表
+        if (Objects.isNull(temp)) {
+            return -1;
+        }
+
+        while (Objects.nonNull(temp) && (temp.data != data)) {
+            position++;
+            temp = temp.next;
+        }
+
+        // 未找到包含指定数据的节点
+        if (Objects.isNull(temp)) {
+            return -1;
+        }
+
+        return position;
+    }
+
+    /**
+     * 搜索指定值在链表中的位置。 如果链表不包含其值，则返回-1.
+     *
+     * 使用递归的方式实现
+     */
+    public int indexOf2(int data) {
+        // 空链表
+        if (Objects.isNull(head)) {
+            return -1;
+        }
+
+        try {
+            return indexOf0(head, data);
+        } catch (AssertionError e) {
+            if ("IndexOutOfBounds".equals(e.getMessage())) {
+                return -1;
+            }
+
+            throw e;
+        }
+    }
+
+    private int indexOf0(Node node, int data) {
+
+        // 节点是null,表示已到链尾
+        assert (Objects.nonNull(node)) : "IndexOutOfBounds";
+
+        // 找到数据, 跳出递归
+        if (node.data == data) {
+            return 0;
+        }
+
+        return 1 + indexOf0(node.next, data);
+    }
+
+
+    /**
+     * 返回链表中指定位置的元素
+     *
+     * 用迭代实现
+     */
+    public int get(int position) {
+
+        if (position < 0) {
+            throw new IndexOutOfBoundsException("无效的index " + position);
+        }
+
+        Node temp = head;
+        for (int i = 0; i < position; i++) {
+            temp = temp.next;
+        }
+
+        if (Objects.isNull(temp)) {
+            throw new IndexOutOfBoundsException("无效的index " + position);
+        }
+
+        return temp.data;
+    }
+
+    /**
+     * 返回链表中指定位置的元素
+     *
+     * 用递归实现
+     */
+    public int get2(int position) {
+        if (position < 0) {
+            throw new IndexOutOfBoundsException("无效的index " + position);
+        }
+
+        try {
+            return get0(head, position);
+        } catch (AssertionError error) {
+            if ("IndexOutOfBounds".equals(error.getMessage())) {
+                throw new IndexOutOfBoundsException("无效的index " + position);
+            }
+
+            throw error;
+        }
+
+    }
+
+    private int get0(Node node, int position) {
+
+        assert Objects.nonNull(node) : "IndexOutOfBounds";
+
+        if (position == 0) {
+            return node.data;
+        }
+
+        return get0(node.next, --position);
+    }
+
+
     public static void main(String[] args) {
 
         //创建一个链表
