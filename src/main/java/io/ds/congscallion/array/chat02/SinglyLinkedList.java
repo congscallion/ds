@@ -18,7 +18,7 @@ public class SinglyLinkedList {
 
 
     // 链表由节点组成， 定义节点
-    static class Node {
+    private static class Node {
 
         //这里示例，每个节点存储数组为一个数值
         int data;
