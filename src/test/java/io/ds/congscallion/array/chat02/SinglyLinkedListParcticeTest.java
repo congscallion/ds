@@ -87,31 +87,31 @@ public class SinglyLinkedListParcticeTest {
     public void searchMiddleElement3() {
 
         SinglyLinkedListParctice list = new SinglyLinkedListParctice();
-        list.add(5);
+        list.add(1);
 
         int midVal = list.searchMiddleElement3();
-        assertThat(midVal).isEqualTo(5);
-
-        list.add(4);
-        midVal = list.searchMiddleElement3();
-        assertThat(midVal).isEqualTo(4);
-
-        list.add(3);
-        midVal = list.searchMiddleElement3();
-        assertThat(midVal).isEqualTo(4);
+        assertThat(midVal).isEqualTo(1);
 
         list.add(2);
         midVal = list.searchMiddleElement3();
-        assertThat(midVal).isEqualTo(3);
+        assertThat(midVal).isEqualTo(2);
 
-        list.add(1);
-
-        midVal = list.searchMiddleElement3();
-        assertThat(midVal).isEqualTo(3);
-
-        list.add(0);
+        list.add(3);
         midVal = list.searchMiddleElement3();
         assertThat(midVal).isEqualTo(2);
+
+        list.add(4);
+        midVal = list.searchMiddleElement3();
+        assertThat(midVal).isEqualTo(3);
+
+        list.add(5);
+
+        midVal = list.searchMiddleElement3();
+        assertThat(midVal).isEqualTo(3);
+
+        list.add(6);
+        midVal = list.searchMiddleElement3();
+        assertThat(midVal).isEqualTo(4);
 
     }
 
