@@ -22,7 +22,7 @@ import java.io.ObjectInputStream;
  * 11. 如果反序列化时，serialVersionUID与序列化时的serialVersionUID不同，则将抛出InvalidClassException.
  * 12. 静态变量属于整个类型，而不是单个实例。序列化是持久化对象的状态，因此仅序列化与特定的实例关联的数据，所以会序列化期间会忽略静态字段.
  * 13. 因此，transient与static都可以让属性不被序列化。但是static字段在反序列化时，如果JVM加载了当前类，且相同名字的属性已赋值，　则反序列化的对象同名属性会被赋值相同的值.
- * 14. final修改的transient属性可以被赋值.
+ * 14. final修饰的transient属性可以被赋值.
  *
  *
  *
