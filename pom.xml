@@ -18,6 +18,14 @@
         <mockito.version>2.13.0</mockito.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <!-- Makes the JAR executable, by configuring the plugin to use the included manifest file -->

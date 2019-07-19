@@ -17,40 +17,39 @@ import java.util.Scanner;
  */
 public class A {
 
-    public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException {
 
-        List<String> allNumbers = Files
-                .readAllLines(Paths.get("/home/wangcong/Desktop/a.txt"), Charset.defaultCharset());
+    List<String> allNumbers = Files
+        .readAllLines(Paths.get("/home/wangcong/Desktop/a.txt"), Charset.defaultCharset());
 
-        Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
-        String line;
-        while ((line = scanner.nextLine()) != null) {
+    String line;
+    while ((line = scanner.nextLine()) != null) {
 
-            System.out.println(line);
+      System.out.println(line);
 
-            if ("886".equals(line)) {
-                return;
-            }
+      if ("886".equals(line)) {
+        return;
+      }
 
-            int i = allNumbers.indexOf(line);
+      int i = allNumbers.indexOf(line);
 
-            FileWriter writer = new FileWriter("/home/wangcong/Desktop/b.txt");
-            writer.write(i + ":" + line);
-            writer.flush();
+      FileWriter writer = new FileWriter("/home/wangcong/Desktop/b.txt");
+      writer.write(i + ":" + line);
+      writer.flush();
 
-            if (!allNumbers.contains(line)) {
-                System.out.println("你输入的密码不在程序生成的数值范围内： " + line);
-            }else{
+      if (!allNumbers.contains(line)) {
+        System.out.println("你输入的密码不在程序生成的数值范围内： " + line);
+      } else {
 
-                System.out.println("你输入的密码是： " + line);
-            }
-
-
-
-        }
+        System.out.println("你输入的密码是： " + line);
+      }
 
 
     }
+
+
+  }
 
 }
