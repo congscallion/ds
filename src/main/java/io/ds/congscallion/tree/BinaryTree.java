@@ -160,4 +160,77 @@ public class BinaryTree<E extends Comparable> {
         return root.getLeft() == null ? root : findSmallestNode(root.getLeft());
     }
 
+    /**
+     * 遍历数
+     *
+     * 遍历树分深度优先与广度优先。
+     *
+     * 深度优先(depth-first search)： 对任意一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。 又分为以下三种遍历方式：
+     * 1、先序遍历(pre-order):  对任意节点， 先访问根，其次遍历左子树，最后遍历右子树。
+     * 2、中序遍历(in-order): 对任意节点， 先遍历左子树，其次访问根，最后遍历右子树。
+     * 3、后序遍历(post-order): 对任意节点，先遍历左子树，其次遍历右子树，最后访问根。
+     *
+     */
+
+
+    public void traverseInOrder() {
+        traverseInOrder(root);
+    }
+
+    /**
+     * 使用中序遍历(in-order)方式遍历指定节点
+     *
+     * @param root 被遍历的节点
+     */
+    private void traverseInOrder(BinaryNode<E> root) {
+
+        if (root != null) {
+
+            traverseInOrder(root.getLeft());
+            System.out.println(" " + root.getData());
+            traverseInOrder(root.getRight());
+        }
+
+    }
+
+
+    public void traversePreOrder() {
+        traversePreOrder(root);
+    }
+
+    /**
+     * 使用先序遍历(pre-order)方式遍历指定节点
+     *
+     * @param root 被遍历的节点
+     */
+    public void traversePreOrder(BinaryNode<E> root) {
+
+        if (root != null) {
+
+            System.out.println(" " + root.getData());
+            traversePreOrder(root.getLeft());
+            traversePreOrder(root.getRight());
+
+        }
+
+    }
+
+
+    /**
+     * 使用后序遍历(post-order)方式遍历指定节点
+     *
+     * @param root 被遍历的节点
+     */
+    public void traversePostOrder(BinaryNode<E> root) {
+
+        if (root != null) {
+
+            traversePreOrder(root.getLeft());
+            traversePreOrder(root.getRight());
+            System.out.println(" " + root.getData());
+
+        }
+
+    }
+
 }
