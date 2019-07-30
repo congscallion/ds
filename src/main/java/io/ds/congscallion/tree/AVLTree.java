@@ -85,8 +85,8 @@ public class AVLTree<E extends Comparable> {
         y.setLeft(x);
 
         //更新节点的高
-        setHeight(y);
         setHeight(x);
+        setHeight(y);
 
         return y;
     }

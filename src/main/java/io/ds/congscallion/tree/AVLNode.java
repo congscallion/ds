@@ -17,10 +17,12 @@ public class AVLNode<E extends Comparable> extends BinaryNode<E> {
 
     public AVLNode(E data) {
         super(data);
+        this.height = 1;
     }
 
     public AVLNode(E data, AVLNode<E> left, AVLNode<E> right) {
         super(data, left, right);
+        this.height =1;
     }
 
     public int getHeight() {
