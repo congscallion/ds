@@ -3,8 +3,6 @@
  */
 package io.ds.congscallion.tree;
 
-import java.util.Comparator;
-
 /**
  * 本类用于表示二叉数节点
  *
