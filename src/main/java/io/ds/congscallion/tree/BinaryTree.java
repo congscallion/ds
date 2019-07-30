@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * 此类表示二叉数，并提供常用的二叉数操作。
+ * 此类表示二叉搜索数，并提供常用的二叉搜索数操作。
  *
  * @author wangcong
  * @version $Id: BinaryTree.java, v0.1 7/15/19 6:42 PM wangcong Exp $$
