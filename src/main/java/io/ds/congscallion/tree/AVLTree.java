@@ -112,19 +112,23 @@ public class AVLTree<E extends Comparable> {
         int balance = getBalance(node);
 
         // 如果当前节点变得不平衡，然后需要通过左右旋转平衡树
+        // 左左情况
         if (balance > 1 && data.compareTo(node.getLeft().getData()) < 0) {
             return rightRotate(node);
         }
 
+        // 左右情况， 先左旋再右旋
         if (balance > 1 && data.compareTo(node.getLeft().getData()) > 0) {
             node.setLeft(leftRotate((AVLNode) node.getLeft()));
             return rightRotate(node);
         }
 
+        // 右右情况， 左旋
         if (balance < -1 && data.compareTo(node.getRight().getData()) > 0) {
             return leftRotate(node);
         }
 
+        // 右左情况， 先右旋再左旋
         if (balance < -1 && data.compareTo(node.getRight().getData()) < 0) {
             node.setRight(rightRotate((AVLNode) node.getRight()));
             return leftRotate(node);
