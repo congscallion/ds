@@ -91,25 +91,16 @@ public class AVLTree<E extends Comparable> {
         return y;
     }
 
-    public AVLNode insert(AVLNode node, E data) {
-
-        if (node == null) {
-            return new AVLNode(data);
+    private AVLNode minValueNode(AVLNode node){
+        AVLNode current = node;
+        while (current.getLeft()!= null){
+            current = (AVLNode) current.getLeft();
         }
+        return current;
+    }
 
-        if (data.compareTo(node.getData()) < 0) {
-            node.setLeft(insert((AVLNode) node.getLeft(), data));
-        } else if (data.compareTo(node.getData()) > 0) {
-            node.setRight(insert((AVLNode) node.getRight(), data));
-        } else {
-            return node;
-        }
 
-        // 更新当前节点的高
-        setHeight(node);
-
-        // 计算当前节点的平衡因子
-        int balance = getBalance(node);
+    private AVLNode rotateTree(AVLNode node, int balance, E data){
 
         // 如果当前节点变得不平衡，然后需要通过左右旋转平衡树
         // 左左情况
@@ -135,7 +126,108 @@ public class AVLTree<E extends Comparable> {
         }
 
         return node;
+
     }
+
+
+    /**
+     * 向avl树中插入新的节点
+     *
+     */
+    public AVLNode insert(AVLNode node, E data) {
+
+        if (node == null) {
+            return new AVLNode(data);
+        }
+
+        if (data.compareTo(node.getData()) < 0) {
+            node.setLeft(insert((AVLNode) node.getLeft(), data));
+        } else if (data.compareTo(node.getData()) > 0) {
+            node.setRight(insert((AVLNode) node.getRight(), data));
+        } else {
+            return node;
+        }
+
+        // 更新当前节点的高
+        setHeight(node);
+
+        // 计算当前节点的平衡因子
+        int balance = getBalance(node);
+
+        return rotateTree(node, balance, data);
+    }
+
+
+    /**
+     * 在avl树中删除某个节点
+     */
+    public AVLNode deleteNode(AVLNode root, E data){
+
+        if(null == root){
+            return root;
+        }
+
+        if(data.compareTo(root.getData()) < 0){
+            root.setLeft(deleteNode((AVLNode) root.getLeft(), data));
+        }else if(data.compareTo(root.getData()) > 0){
+            root.setRight(deleteNode((AVLNode)root.getRight(), data));
+        }else{
+
+            /**
+             * 找到被删除的节点。
+             *
+             * 根据被删除节点是否存在子节点，删除操作又分三种情况
+             *
+             * 1. 无子节点， 最简单，直接删除该节点即可
+             * 2. 一个子节点
+             * 3. 两个子节点
+             *
+             */
+
+            // 只有一个子节点或者没有子节点的情况
+           if((root.getLeft() == null) || (root.getRight() == null)){
+               AVLNode temp = null;
+               if(temp == root.getLeft()){
+                   temp = (AVLNode) root.getRight();
+               }else {
+                   temp = (AVLNode) root.getLeft();
+               }
+
+               // 没有子树的情况
+               if(null == temp){
+                   temp = root;
+                   root = null;
+               }else{
+                   root = temp;
+               }
+           // 两个节点
+           }else {
+
+               // 使用右子树最小节点替换被删除的节点
+               AVLNode<E> temp = minValueNode(root);
+
+               root.setData(temp.getData());
+
+               root.setRight(deleteNode((AVLNode) root.getRight(), temp.getData()));
+
+           }
+
+        }
+
+
+        if(root == null){
+            return root;
+        }
+
+        // 更新节点的高
+        setHeight(root);
+
+        // 计算负载因子
+        int balance = getBalance(root);
+
+        return rotateTree(root, balance, data);
+    }
+
 
 
     public void preOrder(BinaryNode node) {

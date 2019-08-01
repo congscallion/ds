@@ -32,4 +32,10 @@ public class AVLNode<E extends Comparable> extends BinaryNode<E> {
     public void setHeight(int height) {
         this.height = height;
     }
+
+
+    @Override
+    public String toString() {
+        return String.valueOf(getData());
+    }
 }
