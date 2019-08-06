@@ -45,7 +45,7 @@ public class Password {
                 continue;
             }
 
-            if (str.startsWith("33") &&( str.contains("33") || str.contains("22") || str.contains("66")) ) {
+            if (str.startsWith("33") && (str.contains("33") || str.contains("22") || str.contains("66"))) {
                 System.out.println(str);
             }
 

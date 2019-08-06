@@ -15,7 +15,7 @@ import org.junit.Test;
 public class QueueAsArrayTest {
 
     @Test
-    public void testIsFull(){
+    public void testIsFull() {
 
         QueueAsArray queue = new QueueAsArray(10);
         queue.enqueue(1);
@@ -23,7 +23,6 @@ public class QueueAsArrayTest {
         queue.enqueue(3);
 
         Assertions.assertThat(queue.isFull()).isFalse();
-
 
         queue.enqueue(3);
         queue.enqueue(3);
@@ -39,14 +38,14 @@ public class QueueAsArrayTest {
 
 
     @Test
-    public void testIsEmpty(){
+    public void testIsEmpty() {
         QueueAsArray queue = new QueueAsArray(10);
         Assertions.assertThat(queue.isEmpty()).isTrue();
     }
 
 
     @Test
-    public void testEnqueue(){
+    public void testEnqueue() {
         QueueAsArray queue = new QueueAsArray(10);
         queue.enqueue(1);
 
@@ -54,12 +53,12 @@ public class QueueAsArrayTest {
 
         int dequeue = queue.dequeue();
 
-        Assertions.assertThat(dequeue==1).isTrue();
+        Assertions.assertThat(dequeue == 1).isTrue();
     }
 
 
     @Test
-    public void testEnqueue2(){
+    public void testEnqueue2() {
         QueueAsArray queue = new QueueAsArray(5);
 
         for (int i = 0; i < 10; i++) {
@@ -67,9 +66,6 @@ public class QueueAsArrayTest {
         }
 
     }
-
-
-
 
 
 }

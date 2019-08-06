@@ -14,12 +14,12 @@ public class AVLTree<E extends Comparable> {
 
     private AVLNode<E> root;
 
-    public void setRoot(AVLNode<E> root) {
-        this.root = root;
-    }
-
     public AVLNode<E> getRoot() {
         return root;
+    }
+
+    public void setRoot(AVLNode<E> root) {
+        this.root = root;
     }
 
     /**
@@ -91,16 +91,16 @@ public class AVLTree<E extends Comparable> {
         return y;
     }
 
-    private AVLNode minValueNode(AVLNode node){
+    private AVLNode minValueNode(AVLNode node) {
         AVLNode current = node;
-        while (current.getLeft()!= null){
+        while (current.getLeft() != null) {
             current = (AVLNode) current.getLeft();
         }
         return current;
     }
 
 
-    private AVLNode rotateTree(AVLNode node, int balance, E data){
+    private AVLNode rotateTree(AVLNode node, int balance, E data) {
 
         // 如果当前节点变得不平衡，然后需要通过左右旋转平衡树
         // 左左情况
@@ -161,17 +161,17 @@ public class AVLTree<E extends Comparable> {
     /**
      * 在avl树中删除某个节点
      */
-    public AVLNode deleteNode(AVLNode root, E data){
+    public AVLNode deleteNode(AVLNode root, E data) {
 
-        if(null == root){
+        if (null == root) {
             return root;
         }
 
-        if(data.compareTo(root.getData()) < 0){
+        if (data.compareTo(root.getData()) < 0) {
             root.setLeft(deleteNode((AVLNode) root.getLeft(), data));
-        }else if(data.compareTo(root.getData()) > 0){
-            root.setRight(deleteNode((AVLNode)root.getRight(), data));
-        }else{
+        } else if (data.compareTo(root.getData()) > 0) {
+            root.setRight(deleteNode((AVLNode) root.getRight(), data));
+        } else {
 
             /**
              * 找到被删除的节点。
@@ -185,37 +185,36 @@ public class AVLTree<E extends Comparable> {
              */
 
             // 只有一个子节点或者没有子节点的情况
-           if((root.getLeft() == null) || (root.getRight() == null)){
-               AVLNode temp = null;
-               if(temp == root.getLeft()){
-                   temp = (AVLNode) root.getRight();
-               }else {
-                   temp = (AVLNode) root.getLeft();
-               }
+            if ((root.getLeft() == null) || (root.getRight() == null)) {
+                AVLNode temp = null;
+                if (temp == root.getLeft()) {
+                    temp = (AVLNode) root.getRight();
+                } else {
+                    temp = (AVLNode) root.getLeft();
+                }
 
-               // 没有子树的情况
-               if(null == temp){
-                   temp = root;
-                   root = null;
-               }else{
-                   root = temp;
-               }
-           // 两个节点
-           }else {
+                // 没有子树的情况
+                if (null == temp) {
+                    temp = root;
+                    root = null;
+                } else {
+                    root = temp;
+                }
+                // 两个节点
+            } else {
 
-               // 使用右子树最小节点替换被删除的节点
-               AVLNode<E> temp = minValueNode(root);
+                // 使用右子树最小节点替换被删除的节点
+                AVLNode<E> temp = minValueNode(root);
 
-               root.setData(temp.getData());
+                root.setData(temp.getData());
 
-               root.setRight(deleteNode((AVLNode) root.getRight(), temp.getData()));
+                root.setRight(deleteNode((AVLNode) root.getRight(), temp.getData()));
 
-           }
+            }
 
         }
 
-
-        if(root == null){
+        if (root == null) {
             return root;
         }
 
@@ -227,7 +226,6 @@ public class AVLTree<E extends Comparable> {
 
         return rotateTree(root, balance, data);
     }
-
 
 
     public void preOrder(BinaryNode node) {

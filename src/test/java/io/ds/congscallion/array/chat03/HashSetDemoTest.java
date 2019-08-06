@@ -17,6 +17,16 @@ public class HashSetDemoTest {
 
     static final int MAXIMUM_CAPACITY = 1 << 30;
 
+    private static int roundUpToPowerOf2(int number) {
+        return number >= MAXIMUM_CAPACITY
+                ? MAXIMUM_CAPACITY
+                : (number > 1) ? Integer.highestOneBit((number - 1) << 1) : 1;
+    }
+
+    static int indexFor(int h, int length) {
+        return h & (length - 1);
+    }
+
     @Test
     public void test1() {
         Set<String> set = new HashSet<>();
@@ -30,7 +40,6 @@ public class HashSetDemoTest {
         System.out.println(Arrays.toString(set.toArray()));
     }
 
-
     @Test
     public void test2() {
 
@@ -40,44 +49,35 @@ public class HashSetDemoTest {
 
     }
 
-
     @Test
-    public void test3(){
+    public void test3() {
 
-        HashMap<String,String>  map = new HashMap<>();
+        HashMap<String, String> map = new HashMap<>();
         for (int i = 65; i < 165; i++) {
-            map.put(i+"", i+"");
+            map.put(i + "", i + "");
 
         }
     }
 
     @Test
-    public void test4(){
+    public void test4() {
         for (int i = 0; i < 100; i++) {
             System.out.println(i + "-> " + roundUpToPowerOf2(i));
         }
     }
 
-
-    private static int roundUpToPowerOf2(int number) {
-        return number >= MAXIMUM_CAPACITY
-                ? MAXIMUM_CAPACITY
-                : (number > 1) ? Integer.highestOneBit((number - 1) << 1) : 1;
-    }
-
-
     @Test
-    public void test5(){
+    public void test5() {
 
         int len = 16;
-        String len_bin_str = Integer.toBinaryString(len-1);
+        String len_bin_str = Integer.toBinaryString(len - 1);
 
         long str;
-        for (int i = 0; i <100; i++) {
+        for (int i = 0; i < 100; i++) {
             str = Long.valueOf(Integer.toBinaryString(i));
-            System.out.printf("%010d%n",str);
+            System.out.printf("%010d%n", str);
             System.out.printf("%010d%n", Long.valueOf(len_bin_str));
-            System.out.println("i-> "+ i + "    :"+ indexFor(i, len));
+            System.out.println("i-> " + i + "    :" + indexFor(i, len));
 
             System.out.println();
             System.out.println();
@@ -86,18 +86,12 @@ public class HashSetDemoTest {
         }
     }
 
-
-    static int indexFor(int h, int length) {
-        return h & (length-1);
-    }
-
-
     @Test
-    public void test6(){
+    public void test6() {
 
         int num = 77;
         for (int i = 0; i < 100; i++) {
-            System.out.println(i+" & 77 = "+ (i & num) +";   " + i +" % 77 = "+ (i % num));
+            System.out.println(i + " & 77 = " + (i & num) + ";   " + i + " % 77 = " + (i % num));
 
         }
 

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 interface VariableConstant {
 
-  String education = "MCA";
+    String education = "MCA";
 }
 
 /**
@@ -16,17 +16,17 @@ interface VariableConstant {
  */
 public class Employee extends SubperEmployee implements Serializable {
 
-  static String lastName;
-  static String lastName2 = "TANA";
-  static transient String companyCEO;
-  static transient String companyCEO2 = "Jayshree";
-  public transient final String address = "DEL";
-  public String firstName;
-  public transient String companyName;
+    static String lastName;
+    static String lastName2 = "TANA";
+    static transient String companyCEO;
+    static transient String companyCEO2 = "Jayshree";
+    public transient final String address = "DEL";
+    public String firstName;
+    public transient String companyName;
 
 }
 
 class SubperEmployee implements VariableConstant {
 
-  public String familyName;
+    public String familyName;
 }

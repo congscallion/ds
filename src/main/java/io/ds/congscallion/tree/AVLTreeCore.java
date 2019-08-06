@@ -19,8 +19,7 @@ public class AVLTreeCore {
     }
 
 
-
-    private static void testDelete(){
+    private static void testDelete() {
         AVLTree tree = new AVLTree();
 
         /* Constructing tree given in the above figure */
@@ -36,7 +35,7 @@ public class AVLTreeCore {
 
         System.out.println(tree.getRoot());
 
-        System.out.println("Preorder traversal of "+
+        System.out.println("Preorder traversal of " +
                 "constructed tree is : ");
         tree.preOrder(tree.getRoot());
 
@@ -52,16 +51,14 @@ public class AVLTreeCore {
         2 6
         */
         System.out.println();
-        System.out.println("Preorder traversal after "+
+        System.out.println("Preorder traversal after " +
                 "deletion of 10 :");
-        System.out.println("root: "+ tree.getRoot());
+        System.out.println("root: " + tree.getRoot());
         tree.preOrder(tree.getRoot());
     }
 
 
-
-
-    private static void testInsert(){
+    private static void testInsert() {
 
         AVLTree<Integer> tree = new AVLTree<>();
 
@@ -73,7 +70,6 @@ public class AVLTreeCore {
         tree.setRoot(tree.insert(tree.getRoot(), 25));
 
         System.out.println(tree.getRoot().getData());
-
 
         System.out.println("Preorder traversal" +
                 " of constructed tree is : ");

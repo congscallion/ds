@@ -25,12 +25,9 @@ public class StackByArrayTest {
             stackByArray.push(i);
         }
 
-
         assertThat(stackByArray.isEmpty()).isFalse();
 
-
         assertThat(stackByArray.peek()).isEqualTo(99);
-
 
 
     }

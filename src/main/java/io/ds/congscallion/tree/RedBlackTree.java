@@ -61,31 +61,12 @@ public class RedBlackTree<E extends Comparable<E>> {
 
     private Node root;
 
-    private class Node {
-
-        private E e;
-        private Node left;
-        private Node right;
-        private Node parent;
-        private boolean color;
-
-        public Node(E e) {
-            this.e = e;
-            this.left = null;
-            this.right = null;
-            this.parent = null;
-            this.color = RED;
-        }
-
-    }
-
     private boolean isRed(Node x) {
         if (x == null) {
             return false;
         }
         return x.color == RED;
     }
-
 
     private Node rotateLeft(Node x) {
 
@@ -110,7 +91,6 @@ public class RedBlackTree<E extends Comparable<E>> {
         return y;
     }
 
-
     private Node rotateRight(Node x) {
 
         Node y = x.left;
@@ -132,7 +112,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 
         return y;
     }
-
 
     public Node insert(E e) {
 
@@ -178,7 +157,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 
         return node;
     }
-
 
     /**
      * 本方法用于在树中执行插入操作后，将树重新平衡，保证红黑节点满足红黑树的特征
@@ -245,7 +223,6 @@ public class RedBlackTree<E extends Comparable<E>> {
         root.color = BLACK;
 
     }
-
 
     public void delete(E e) {
         delete(root, e);
@@ -386,7 +363,6 @@ public class RedBlackTree<E extends Comparable<E>> {
         return node;
     }
 
-
     private void rbTransplant(Node u, Node v) {
         if (u.parent == null) {
             root = v;
@@ -398,11 +374,9 @@ public class RedBlackTree<E extends Comparable<E>> {
         v.parent = u.parent;
     }
 
-
     public void prettyPrint() {
         printHelper(this.root, "", true);
     }
-
 
     private void printHelper(Node root, String indent, boolean last) {
         if (root != null) {
@@ -420,6 +394,24 @@ public class RedBlackTree<E extends Comparable<E>> {
             printHelper(root.left, indent, false);
             printHelper(root.right, indent, true);
         }
+    }
+
+    private class Node {
+
+        private E e;
+        private Node left;
+        private Node right;
+        private Node parent;
+        private boolean color;
+
+        public Node(E e) {
+            this.e = e;
+            this.left = null;
+            this.right = null;
+            this.parent = null;
+            this.color = RED;
+        }
+
     }
 
 
