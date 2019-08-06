@@ -1,4 +1,4 @@
-package io.ds.collections;
+package io.ds.example.collections;
 
 
 import java.util.List;

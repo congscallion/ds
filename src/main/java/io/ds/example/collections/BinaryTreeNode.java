@@ -1,4 +1,4 @@
-package io.ds.collections;
+package io.ds.example.collections;
 
 /**
  * A simple interface for binary trees.  An empty binary tree is

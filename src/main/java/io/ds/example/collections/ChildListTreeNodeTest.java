@@ -1,4 +1,4 @@
-//package io.ds.collections;
+//package io.ds.example.collections;
 //
 //
 //import static org.junit.Assert.assertEquals;

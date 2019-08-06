@@ -1,5 +1,4 @@
-package io.ds.collections;
-
+package io.ds.example.collections;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,11 +17,11 @@ import javax.swing.border.BevelBorder;
  * A little application that lets you interactively manipulate a
  * binary search tree.
  */
-public class RedBlackTreeViewer extends JFrame {
+public class BinarySearchTreeViewer extends JFrame {
 
-    RedBlackTree tree = new RedBlackTree();
+    BinarySearchTree<String> tree = new BinarySearchTree<String>();
 
-    JFrame frame = new JFrame("Red Black Tree Viewer");
+    JFrame frame = new JFrame("Binary Search Tree");
     JTextField valueField = new JTextField(40);
     JPanel buttonPanel = new JPanel();
     BinaryTreePanel panel = new BinaryTreePanel(null, 40, 40);
@@ -34,7 +33,7 @@ public class RedBlackTreeViewer extends JFrame {
      * very nice way, and constructs and registers all the
      * operation objects.
      */
-    public RedBlackTreeViewer() {
+    public BinarySearchTreeViewer() {
         JPanel valuePanel = new JPanel();
         valuePanel.add(new JLabel("Value: "));
         valuePanel.add(valueField);
@@ -79,13 +78,29 @@ public class RedBlackTreeViewer extends JFrame {
                 tree.remove(value);
             }
         };
+        new Operation("Rotate Left") {
+            protected void execute(String value) {
+                BinaryTreeNode<String> n = tree.nodeContaining(value);
+                if (n != null && n.getRight() != null) {
+                    tree.rotateLeft(n);
+                }
+            }
+        };
+        new Operation("Rotate Right") {
+            protected void execute(String value) {
+                BinaryTreeNode<String> n = tree.nodeContaining(value);
+                if (n != null && n.getLeft() != null) {
+                    tree.rotateRight(n);
+                }
+            }
+        };
     }
 
     /**
-     * Makes an application whose main window is a RedBlackTreeViewer.
+     * Makes an application whose main window is a BinarySearchTreeViewer.
      */
     public static void main(String[] args) {
-        RedBlackTreeViewer viewer = new RedBlackTreeViewer();
+        BinarySearchTreeViewer viewer = new BinarySearchTreeViewer();
         viewer.frame.setSize(540, 480);
         viewer.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         viewer.frame.setVisible(true);
@@ -109,13 +124,10 @@ public class RedBlackTreeViewer extends JFrame {
         public void actionPerformed(ActionEvent event) {
             String value = valueField.getText();
             messageLine.setText("");
-            try {
-                execute(value);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            // Update the picture and return the focus to the text field.  Select
-            // all the text in the textfield so it can easily be overwritten.
+            execute(value);
+            // Update the picture and return the focus to the text
+            // field.  Select all the text in the textfield so it
+            // can easily be overwritten.
             panel.setTree(tree.getRoot());
             valueField.requestFocus();
             valueField.selectAll();

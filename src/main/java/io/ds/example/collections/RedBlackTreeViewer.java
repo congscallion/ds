@@ -1,4 +1,5 @@
-package io.ds.collections;
+package io.ds.example.collections;
+
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,11 +18,11 @@ import javax.swing.border.BevelBorder;
  * A little application that lets you interactively manipulate a
  * binary search tree.
  */
-public class BinarySearchTreeViewer extends JFrame {
+public class RedBlackTreeViewer extends JFrame {
 
-    BinarySearchTree<String> tree = new BinarySearchTree<String>();
+    RedBlackTree tree = new RedBlackTree();
 
-    JFrame frame = new JFrame("Binary Search Tree");
+    JFrame frame = new JFrame("Red Black Tree Viewer");
     JTextField valueField = new JTextField(40);
     JPanel buttonPanel = new JPanel();
     BinaryTreePanel panel = new BinaryTreePanel(null, 40, 40);
@@ -33,7 +34,7 @@ public class BinarySearchTreeViewer extends JFrame {
      * very nice way, and constructs and registers all the
      * operation objects.
      */
-    public BinarySearchTreeViewer() {
+    public RedBlackTreeViewer() {
         JPanel valuePanel = new JPanel();
         valuePanel.add(new JLabel("Value: "));
         valuePanel.add(valueField);
@@ -62,9 +63,9 @@ public class BinarySearchTreeViewer extends JFrame {
         };
         new Operation("Add All") {
             protected void execute(String value) {
-              for (String s : value.split("\\s+")) {
-                tree.add(s);
-              }
+                for (String s : value.split("\\s+")) {
+                    tree.add(s);
+                }
             }
         };
         new Operation("Lookup") {
@@ -78,29 +79,13 @@ public class BinarySearchTreeViewer extends JFrame {
                 tree.remove(value);
             }
         };
-        new Operation("Rotate Left") {
-            protected void execute(String value) {
-                BinaryTreeNode<String> n = tree.nodeContaining(value);
-              if (n != null && n.getRight() != null) {
-                tree.rotateLeft(n);
-              }
-            }
-        };
-        new Operation("Rotate Right") {
-            protected void execute(String value) {
-                BinaryTreeNode<String> n = tree.nodeContaining(value);
-              if (n != null && n.getLeft() != null) {
-                tree.rotateRight(n);
-              }
-            }
-        };
     }
 
     /**
-     * Makes an application whose main window is a BinarySearchTreeViewer.
+     * Makes an application whose main window is a RedBlackTreeViewer.
      */
     public static void main(String[] args) {
-        BinarySearchTreeViewer viewer = new BinarySearchTreeViewer();
+        RedBlackTreeViewer viewer = new RedBlackTreeViewer();
         viewer.frame.setSize(540, 480);
         viewer.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         viewer.frame.setVisible(true);
@@ -124,10 +109,13 @@ public class BinarySearchTreeViewer extends JFrame {
         public void actionPerformed(ActionEvent event) {
             String value = valueField.getText();
             messageLine.setText("");
-            execute(value);
-            // Update the picture and return the focus to the text
-            // field.  Select all the text in the textfield so it
-            // can easily be overwritten.
+            try {
+                execute(value);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            // Update the picture and return the focus to the text field.  Select
+            // all the text in the textfield so it can easily be overwritten.
             panel.setTree(tree.getRoot());
             valueField.requestFocus();
             valueField.selectAll();
