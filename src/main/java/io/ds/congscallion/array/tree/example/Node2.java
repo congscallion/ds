@@ -10,12 +10,12 @@ package io.ds.congscallion.array.tree.example;
  * @author wangcong
  * @version $Id: Node.java, v0.1 7/30/19 5:42 PM wangcong Exp $$
  */
-public class Node {
+public class Node2 {
 
     int key, height;
-    Node left, right;
+    Node2 left, right;
 
-    Node(int d) {
+    Node2(int d) {
         key = d;
         height = 1;
     }
