@@ -188,14 +188,13 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
 
         System.out.print(indent);
 
-        if (last) {
-            System.out.print("R----");
-            indent += "     ";
-        } else {
+        if (!last) {
             System.out.print("L----");
             indent += "|    ";
+        } else {
+            System.out.print("R----");
+            indent += "     ";
         }
-
 
         visitor.visitor(this);
 
