@@ -36,6 +36,7 @@ public class BinarySearchTree<E extends Comparable> {
 
     /**
      * 向树中添加数据， 如果树中已存在相同数据，则使用新值替换旧值。
+     *
      * @param data
      */
     public void add(E data) {
@@ -56,13 +57,16 @@ public class BinarySearchTree<E extends Comparable> {
             if (compare == 0) {
                 n.setData(data);
                 return;
+
             } else if (compare > 0) {
+
                 if (null == n.getRight()) {
                     n.setRight(new LinkedBinaryTreeNode<>(data));
                     return;
                 }
 
                 n = n.getRight();
+
             } else {
 
                 if (null == n.getLeft()) {
@@ -102,9 +106,12 @@ public class BinarySearchTree<E extends Comparable> {
         BinaryTreeNode<E> pullUp = (node.getLeft() == null) ? node.getRight() : node.getLeft();
         if (node == root) {
             setRoot(pullUp);
+
         } else if (node.getParent().getRight() == node) {
             node.getParent().setRight(pullUp);
+
         } else {
+
             node.getParent().setLeft(pullUp);
         }
 
@@ -242,6 +249,7 @@ public class BinarySearchTree<E extends Comparable> {
         bst.add(340);
         bst.add(50);
         bst.add(230);
+
 
         bst.traverseInorder(new Visitor() {
             @Override
