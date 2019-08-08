@@ -44,7 +44,9 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
 
     @Override
     public void setLeft(BinaryTreeNode<E> child) {
+
         if (null == child) {
+            this.left = null;
             return;
         }
 
@@ -56,7 +58,7 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
         }
 
         /***
-         * 确认子节点不是父节点
+         * 确保子节点不是父节点
          */
         for (LinkedBinaryTreeNode<E> n = this; n != null; n = n.parent) {
             if (n == child) {
@@ -69,8 +71,10 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
             left.parent = null;
         }
 
-        childNode.removeFromParent();
-        childNode.parent = this;
+        if (null != childNode) {
+            childNode.removeFromParent();
+            childNode.parent = this;
+        }
 
         this.left = childNode;
     }
@@ -84,6 +88,7 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
     public void setRight(BinaryTreeNode<E> child) {
 
         if (null == child) {
+            this.right = null;
             return;
         }
 
@@ -108,8 +113,11 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
             right.parent = null;
         }
 
-        childNode.removeFromParent();
-        childNode.parent = this;
+        if (null != childNode) {
+
+            childNode.removeFromParent();
+            childNode.parent = this;
+        }
 
         this.right = childNode;
 
