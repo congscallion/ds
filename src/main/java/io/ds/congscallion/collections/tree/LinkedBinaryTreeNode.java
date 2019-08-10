@@ -44,38 +44,16 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
 
     @Override
     public void setLeft(BinaryTreeNode<E> child) {
-
-        if (null == child) {
-            this.left = null;
-            return;
-        }
-
-        /**
-         * 确保子节点要小于当前节点
-         */
-        if (this.getData().compareTo(child.getData()) < 0) {
-            throw new IllegalArgumentException();
-        }
-
-        /***
-         * 确保子节点不是父节点
-         */
-        for (LinkedBinaryTreeNode<E> n = this; n != null; n = n.parent) {
-            if (n == child) {
-                throw new IllegalArgumentException();
-            }
-        }
-
         LinkedBinaryTreeNode<E> childNode = (LinkedBinaryTreeNode<E>) child;
+
+        // Break old links, then reconnect properly.
         if (this.left != null) {
             left.parent = null;
         }
-
-        if (null != childNode) {
+        if (childNode != null) {
             childNode.removeFromParent();
             childNode.parent = this;
         }
-
         this.left = childNode;
     }
 
@@ -86,39 +64,16 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
 
     @Override
     public void setRight(BinaryTreeNode<E> child) {
-
-        if (null == child) {
-            this.right = null;
-            return;
-        }
-
-        /**
-         * 确保子节点要大于当前节点
-         */
-        if (this.getData().compareTo(child.getData()) >= 0) {
-            throw new IllegalArgumentException();
-        }
-
-        /***
-         * 确认子节点不是父节点
-         */
-        for (LinkedBinaryTreeNode<E> n = this; n != null; n = n.parent) {
-            if (n == child) {
-                throw new IllegalArgumentException();
-            }
-        }
-
         LinkedBinaryTreeNode<E> childNode = (LinkedBinaryTreeNode<E>) child;
-        if (this.right != null) {
+
+        // Break old links, then reconnect properly.
+        if (right != null) {
             right.parent = null;
         }
-
-        if (null != childNode) {
-
+        if (childNode != null) {
             childNode.removeFromParent();
             childNode.parent = this;
         }
-
         this.right = childNode;
 
     }
@@ -214,5 +169,10 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
             right.prettyPrint(visitor, indent, true);
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return this.data+"";
     }
 }

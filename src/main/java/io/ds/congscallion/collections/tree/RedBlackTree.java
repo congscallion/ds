@@ -4,6 +4,7 @@
  */
 package io.ds.congscallion.collections.tree;
 
+import io.ds.congscallion.collections.tree.BinaryTreeNode.Visitor;
 import io.ds.congscallion.collections.tree.RedBlackTreeNode.Color;
 
 /**
@@ -151,5 +152,57 @@ public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree
         return Color.RED == ((RedBlackTreeNode) node).color;
     }
 
+
+    public static void main(String[] args) {
+
+        RedBlackTree<Integer> rbt = new RedBlackTree<>();
+
+        rbt.add(99);
+        rbt.add(300);
+        rbt.add(120);
+        rbt.add(330);
+        rbt.add(70);
+        rbt.add(220);
+        rbt.add(140);
+        rbt.add(320);
+        rbt.add(80);
+        rbt.add(250);
+        rbt.add(130);
+        rbt.add(340);
+        rbt.add(50);
+
+
+        rbt.traverseInorder(new Visitor() {
+            @Override
+            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+
+                RedBlackTreeNode rbtn = (RedBlackTreeNode) node;
+
+                String colorStr = rbtn.color == Color.RED? "(red)":"(black)";
+
+                System.out.print(node+colorStr+", ");
+            }
+        });
+
+        printSplitLine();
+
+        rbt.prettyPrint(new Visitor() {
+            @Override
+            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+
+                RedBlackTreeNode rbtn = (RedBlackTreeNode) node;
+
+                String colorStr = rbtn.color == Color.RED? "(red)":"(black)";
+
+                System.out.println(node+colorStr+", ");
+            }
+        },"", true);
+    }
+
+    private static void printSplitLine() {
+        System.out.println();
+        System.out.println("-----------------------------------");
+        System.out.println();
+    }
 
 }
