@@ -65,12 +65,6 @@ public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree
         return new RedBlackTreeNode<>(data);
     }
 
-    @Override
-    protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
-
-    }
-
-
     /**
      *
      * 红黑树中添加节点后，平衡树
@@ -136,6 +130,102 @@ public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree
     }
 
 
+    /**
+     * 删除节点后，平衡树
+     *
+     *
+     * @param node 被删除节点子节点或者被删除的节点
+     */
+    @Override
+    protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
+        adjustAfterRemoval0((RedBlackTreeNode) node);
+    }
+
+    private void adjustAfterRemoval0(RedBlackTreeNode<E> n){
+
+        while (n != root && isBlack(n)){
+
+            if(n == leftOf(parentOf(n))){
+
+                // 兄弟节点
+                BinaryTreeNode<E> sibling =  rightOf(parentOf(n));
+                if(isRed(sibling)){
+                    setColor(sibling, Color.BLACK);
+                    setColor(parentOf(n), Color.RED);
+                    rotateLeft(parentOf(n));
+                    sibling = rightOf(parentOf(n));
+                }
+
+                if(isBlack(leftOf(sibling)) && isBlack(rightOf(sibling))){
+                    setColor(sibling, Color.RED);
+                    n = (RedBlackTreeNode<E>) parentOf(n);
+                }else {
+
+                    if(isBlack(rightOf(sibling))){
+                        setColor(leftOf(sibling), Color.BLACK);
+                        setColor(sibling, Color.RED);
+                        rotateRight(sibling);
+                        sibling = rightOf(parentOf(n));
+                    }
+
+                    setColor(sibling, colorOf(parentOf(n)));
+                    setColor(parentOf(n), Color.BLACK);
+                    setColor(rightOf(sibling), Color.BLACK);
+                    rotateLeft(parentOf(n));
+                    n = (RedBlackTreeNode<E>) root;
+                }
+
+            }else{
+
+                BinaryTreeNode<E> sibling =  leftOf(parentOf(n));
+
+                if(isRed(sibling)){
+                    setColor(sibling, Color.BLACK);
+                    setColor(parentOf(n), Color.RED);
+                    rotateRight(parentOf(n));
+                    sibling = leftOf(parentOf(n));
+                }
+
+                if(isBlack(leftOf(sibling)) && isBlack(rightOf(sibling))){
+                    setColor(sibling, Color.RED);
+                    n = (RedBlackTreeNode<E>) parentOf(n);
+                }else {
+
+                    if(isBlack(leftOf(sibling))){
+
+                        setColor(rightOf(sibling), Color.BLACK);
+                        setColor(sibling, Color.RED);
+                        rotateLeft(sibling);
+                        sibling = leftOf(parentOf(n));
+                    }
+
+                    setColor(sibling, colorOf(parentOf(n)));
+                    setColor(parentOf(n), Color.BLACK);
+                    setColor(leftOf(sibling), Color.BLACK);
+                    rotateRight(parentOf(n));
+                    n = (RedBlackTreeNode<E>) root;
+
+                }
+            }
+
+        }
+
+
+        setColor(n, Color.BLACK);
+    }
+
+    /**
+     *
+     * 删除后，平衡树条件
+     *
+     * @param node 被删除的节点
+     * @return
+     */
+    @Override
+    protected boolean needAdjustAfterRemoval(BinaryTreeNode<E> node) {
+        return isBlack(node);
+    }
+
     private void setColor(BinaryTreeNode<E> node, Color color) {
         if (null != node) {
             RedBlackTreeNode treeNode = (RedBlackTreeNode) node;
@@ -150,6 +240,16 @@ public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree
         }
 
         return Color.RED == ((RedBlackTreeNode) node).color;
+    }
+
+
+    private boolean isBlack(BinaryTreeNode<E> node){
+        return null == node  ||  colorOf(node) == Color.BLACK;
+    }
+
+    private Color colorOf(BinaryTreeNode<E> node){
+
+        return null == node ? Color.BLACK : ((RedBlackTreeNode<E>)node).color;
     }
 
 

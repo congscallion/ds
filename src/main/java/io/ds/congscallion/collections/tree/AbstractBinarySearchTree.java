@@ -42,6 +42,10 @@ public abstract class AbstractBinarySearchTree<E extends Comparable> {
 
     /**
      * 树中删除节点后， 使用此方法将树平衡
+     *
+     * 当被删除的节点
+     *
+     *
      * @param node
      */
     protected abstract void adjustAfterRemoval(BinaryTreeNode<E> node);
@@ -133,19 +137,56 @@ public abstract class AbstractBinarySearchTree<E extends Comparable> {
         // 此时， node 只有一个或者没有子节点
         BinaryTreeNode<E> pullUp = (null == leftOf(node)) ? rightOf(node) : leftOf(node);
 
-        if (root == node) {
-            setRoot(pullUp);
+        if(null != pullUp){
 
-        } else if (rightOf(parentOf(node)) == node) {
+            // 被删除节点为根节点， 则将替换节点设置为根节点
+            if(root == node){
+                setRoot(pullUp);
+            }
 
-            parentOf(node).setRight(pullUp);
-        } else {
+            // 被删除节点是其父节点的左节点，设置将替换节点设置为父节点的左节点
+            else if(leftOf(parentOf(node)) == node){
+                parentOf(node).setLeft(pullUp);
+            }
 
-            parentOf(node).setLeft(pullUp);
+            // 否则，设置为右节点
+            else {
+                parentOf(node).setRight(pullUp);
+            }
+
+
+            if(needAdjustAfterRemoval(node)){
+                adjustAfterRemoval(pullUp);
+            }
         }
 
-        adjustAfterRemoval(node);
+        // 被删除节点没有子节点时， 如果被删除节点是根， 意味着要清空树，设置将根设置为null
+        else if(root == node){
+            setRoot(null);
+        }
 
+        // 其它情况，平衡树
+        else{
+
+            if(needAdjustAfterRemoval(node)){
+                adjustAfterRemoval(node);
+            }
+
+            node.removeFromParent();
+        }
+    }
+
+
+    /**
+     *
+     * 在树中执行删除操作后，是否需要执行平衡操作， 默认不需要
+     *
+     *
+     * @param node 被删除的节点
+     * @return
+     */
+    protected boolean needAdjustAfterRemoval(BinaryTreeNode<E> node){
+        return false;
     }
 
 
