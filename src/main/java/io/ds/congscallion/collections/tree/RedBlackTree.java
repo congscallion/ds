@@ -98,7 +98,7 @@ public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree
             if (isRed(siblingOf(parentOf(node)))) {
 
                 setColor(parentOf(node), Color.BLACK);
-                setColor(siblingOf(node), Color.BLACK);
+                setColor(siblingOf(parentOf(node)), Color.BLACK);
                 setColor(grandparentOf(node), Color.RED);
 
                 adjustAfterInsertion(grandparentOf(node));
@@ -160,7 +160,7 @@ public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree
         rbt.add(99);
         rbt.add(300);
         rbt.add(120);
-        rbt.add(330);
+//        rbt.add(330);
         rbt.add(70);
         rbt.add(220);
         rbt.add(140);

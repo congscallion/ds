@@ -32,9 +32,30 @@ public class RedBlackTreeCore {
 //
 //        tree.prettyPrint();
 
-        createRamdonTree();
+//        createRamdonTree();
+
+        add();
+
+    }
 
 
+    private static void add(){
+        RedBlackTree<Integer> rbt = new RedBlackTree<>();
+        rbt.insert(99);
+        rbt.insert(300);
+        rbt.insert(120);
+//        rbt.insert(330);
+        rbt.insert(70);
+        rbt.insert(220);
+        rbt.insert(140);
+        rbt.insert(320);
+        rbt.insert(80);
+        rbt.insert(250);
+        rbt.insert(130);
+        rbt.insert(340);
+        rbt.insert(50);
+
+        rbt.prettyPrint();
     }
 
 
