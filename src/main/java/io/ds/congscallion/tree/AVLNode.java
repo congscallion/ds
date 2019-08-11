@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.tree;
 
@@ -13,29 +12,29 @@ package io.ds.congscallion.tree;
  */
 public class AVLNode<E extends Comparable> extends BinaryNode<E> {
 
-    private int height;
+  private int height;
 
-    public AVLNode(E data) {
-        super(data);
-        this.height = 1;
-    }
+  public AVLNode(E data) {
+    super(data);
+    this.height = 1;
+  }
 
-    public AVLNode(E data, AVLNode<E> left, AVLNode<E> right) {
-        super(data, left, right);
-        this.height = 1;
-    }
+  public AVLNode(E data, AVLNode<E> left, AVLNode<E> right) {
+    super(data, left, right);
+    this.height = 1;
+  }
 
-    public int getHeight() {
-        return height;
-    }
+  public int getHeight() {
+    return height;
+  }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
+  public void setHeight(int height) {
+    this.height = height;
+  }
 
 
-    @Override
-    public String toString() {
-        return String.valueOf(getData());
-    }
+  @Override
+  public String toString() {
+    return String.valueOf(getData());
+  }
 }

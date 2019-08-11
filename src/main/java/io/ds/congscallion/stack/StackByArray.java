@@ -15,43 +15,43 @@ package io.ds.congscallion.stack;
  */
 public class StackByArray {
 
-    private static final int MAX = 1000; // 栈最大深度
-    int top;  // 栈顶下标
-    private int[] table = new int[MAX];
+  private static final int MAX = 1000; // 栈最大深度
+  int top;  // 栈顶下标
+  private int[] table = new int[MAX];
 
-    public StackByArray() {
-        top = -1;
+  public StackByArray() {
+    top = -1;
+  }
+
+
+  public boolean isEmpty() {
+    return top <= 0;
+  }
+
+  public int push(int data) {
+
+    if (top >= (MAX - 1)) {
+      throw new StackOverflowError();
     }
 
+    table[++top] = data;
 
-    public boolean isEmpty() {
-        return top <= 0;
+    return data;
+  }
+
+
+  public int pop() {
+
+    if (top < 0) {
+      throw new StackOverflowError();
     }
 
-    public int push(int data) {
-
-        if (top >= (MAX - 1)) {
-            throw new StackOverflowError();
-        }
-
-        table[++top] = data;
-
-        return data;
-    }
+    return table[top--];
+  }
 
 
-    public int pop() {
-
-        if (top < 0) {
-            throw new StackOverflowError();
-        }
-
-        return table[top--];
-    }
-
-
-    public int peek() {
-        return table[top];
-    }
+  public int peek() {
+    return table[top];
+  }
 
 }

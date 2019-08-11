@@ -14,31 +14,31 @@ import java.io.ObjectOutputStream;
 public class SerializaitonClass {
 
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        Employee employee = new Employee();
-        employee.firstName = "Vivekanand";
-        employee.lastName = "Gautam";
-        employee.familyName = "Jen";
-        employee.companyName = "NND";
-        employee.companyCEO = "CEO";
+    Employee employee = new Employee();
+    employee.firstName = "Vivekanand";
+    employee.lastName = "Gautam";
+    employee.familyName = "Jen";
+    employee.companyName = "NND";
+    employee.companyCEO = "CEO";
 
-        try {
+    try {
 
-            FileOutputStream fileOut = new FileOutputStream("./employee.txt");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      FileOutputStream fileOut = new FileOutputStream("./employee.txt");
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
-            out.writeObject(employee);
-            out.close();
-            fileOut.close();
+      out.writeObject(employee);
+      out.close();
+      fileOut.close();
 
-            System.out.printf("Serialized data is saved in ./employee.txt file");
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
-
-
+      System.out.printf("Serialized data is saved in ./employee.txt file");
+    } catch (IOException i) {
+      i.printStackTrace();
     }
+
+
+  }
 
 
 }

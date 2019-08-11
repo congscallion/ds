@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.collections.tree;
 
@@ -13,19 +12,19 @@ package io.ds.congscallion.collections.tree;
  */
 public class RedBlackTreeNode<E extends Comparable> extends LinkedBinaryTreeNode<E> {
 
-    Color color = Color.BLACK;
+  Color color = Color.BLACK;
 
 
-    public RedBlackTreeNode(E data) {
-        super(data);
-    }
+  public RedBlackTreeNode(E data) {
+    super(data);
+  }
 
 
-    /**
-     * 表示红黑树中的颜色
-     */
-    enum Color {
-        RED, BLACK
-    }
+  /**
+   * 表示红黑树中的颜色
+   */
+  enum Color {
+    RED, BLACK
+  }
 
 }

@@ -23,47 +23,47 @@ import java.io.ObjectInputStream;
  */
 public class DeserializationClass {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        Employee.lastName2 = "XICI";
-        Employee.companyCEO2 = "CIII";
-        Employee.lastName = "YIOOO";
-        Employee.companyCEO = "CEOOO";
+    Employee.lastName2 = "XICI";
+    Employee.companyCEO2 = "CIII";
+    Employee.lastName = "YIOOO";
+    Employee.companyCEO = "CEOOO";
 
-        Employee employee = null;
+    Employee employee = null;
 
-        try {
+    try {
 
-            FileInputStream fileIn = new FileInputStream("./employee.txt");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
+      FileInputStream fileIn = new FileInputStream("./employee.txt");
+      ObjectInputStream in = new ObjectInputStream(fileIn);
 
-            employee = (Employee) in.readObject();
+      employee = (Employee) in.readObject();
 
-            in.close();
-            fileIn.close();
+      in.close();
+      fileIn.close();
 
 
-        } catch (IOException i) {
-            i.printStackTrace();
-            return;
-        } catch (ClassNotFoundException c) {
-            System.out.println("Employee class not found");
-            c.printStackTrace();
-            return;
-        }
-
-        System.out.println("Deserializing Employee...");
-        System.out.println("First Name of Employee: " + employee.firstName);
-        System.out.println("Last Name of Employee: " + employee.lastName);
-        System.out.println("Last Name2 of Employee: " + employee.lastName2);
-        System.out.println("FamilyName of Employee: " + employee.familyName);
-        System.out.println("CompanyName of Employee: " + employee.companyName);
-        System.out.println("CompanyCEO of Employee: " + employee.companyCEO);
-        System.out.println("CompanyCEO2 of Employee: " + employee.companyCEO2);
-        System.out.println("Address of Employee: " + employee.address);
-        System.out.println("Education of Employee: " + employee.education);
-
+    } catch (IOException i) {
+      i.printStackTrace();
+      return;
+    } catch (ClassNotFoundException c) {
+      System.out.println("Employee class not found");
+      c.printStackTrace();
+      return;
     }
+
+    System.out.println("Deserializing Employee...");
+    System.out.println("First Name of Employee: " + employee.firstName);
+    System.out.println("Last Name of Employee: " + employee.lastName);
+    System.out.println("Last Name2 of Employee: " + employee.lastName2);
+    System.out.println("FamilyName of Employee: " + employee.familyName);
+    System.out.println("CompanyName of Employee: " + employee.companyName);
+    System.out.println("CompanyCEO of Employee: " + employee.companyCEO);
+    System.out.println("CompanyCEO2 of Employee: " + employee.companyCEO2);
+    System.out.println("Address of Employee: " + employee.address);
+    System.out.println("Education of Employee: " + employee.education);
+
+  }
 
 
 }

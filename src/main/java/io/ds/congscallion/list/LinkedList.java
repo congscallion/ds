@@ -5,13 +5,13 @@ import java.util.ListIterator;
 
 public class LinkedList<E> extends AbstractSequentialList<E> {
 
-    @Override
-    public ListIterator<E> listIterator(int index) {
-        return null;
-    }
+  @Override
+  public ListIterator<E> listIterator(int index) {
+    return null;
+  }
 
-    @Override
-    public int size() {
-        return 0;
-    }
+  @Override
+  public int size() {
+    return 0;
+  }
 }

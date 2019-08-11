@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.tree;
 
@@ -13,7 +12,7 @@ package io.ds.congscallion.tree;
  */
 public class RedBlackTreeCore {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
 //        RedBlackTree<Integer> tree = new RedBlackTree<>();
 //
@@ -34,45 +33,45 @@ public class RedBlackTreeCore {
 
 //        createRamdonTree();
 
-        add();
+    add();
 
-    }
+  }
 
 
-    private static void add(){
-        RedBlackTree<Integer> rbt = new RedBlackTree<>();
-        rbt.insert(99);
-        rbt.insert(300);
-        rbt.insert(120);
+  private static void add() {
+    RedBlackTree<Integer> rbt = new RedBlackTree<>();
+    rbt.insert(99);
+    rbt.insert(300);
+    rbt.insert(120);
 //        rbt.insert(330);
-        rbt.insert(70);
-        rbt.insert(220);
-        rbt.insert(140);
-        rbt.insert(320);
-        rbt.insert(80);
-        rbt.insert(250);
-        rbt.insert(130);
-        rbt.insert(340);
-        rbt.insert(50);
+    rbt.insert(70);
+    rbt.insert(220);
+    rbt.insert(140);
+    rbt.insert(320);
+    rbt.insert(80);
+    rbt.insert(250);
+    rbt.insert(130);
+    rbt.insert(340);
+    rbt.insert(50);
 
-        rbt.prettyPrint();
+    rbt.prettyPrint();
+  }
+
+
+  private static void createRamdonTree() {
+
+    RedBlackTree<Integer> tree = new RedBlackTree<>();
+
+    for (int i = 0; i < 10; i++) {
+      tree.insert(getRandmon());
     }
 
-
-    private static void createRamdonTree() {
-
-        RedBlackTree<Integer> tree = new RedBlackTree<>();
-
-        for (int i = 0; i < 10; i++) {
-            tree.insert(getRandmon());
-        }
-
-        tree.prettyPrint();
+    tree.prettyPrint();
 
 
-    }
+  }
 
-    private static int getRandmon() {
-        return (int) (Math.random() * 80);
-    }
+  private static int getRandmon() {
+    return (int) (Math.random() * 80);
+  }
 }

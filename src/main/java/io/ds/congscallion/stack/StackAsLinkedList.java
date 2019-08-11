@@ -11,67 +11,67 @@ package io.ds.congscallion.stack;
  */
 public class StackAsLinkedList {
 
-    StackNode root;
+  StackNode root;
 
-    public boolean isEmpty() {
-        return null == root;
-    }
+  public boolean isEmpty() {
+    return null == root;
+  }
 
-    public void push(int data) {
+  public void push(int data) {
 
-        StackNode newNode = new StackNode(data);
+    StackNode newNode = new StackNode(data);
 
-        if (null == root) {
-            root = newNode;
-        } else {
+    if (null == root) {
+      root = newNode;
+    } else {
 
-            StackNode temp = root;
-            root = newNode;
-            newNode.next = temp;
-
-        }
-
+      StackNode temp = root;
+      root = newNode;
+      newNode.next = temp;
 
     }
 
-    public int pop() {
 
-        if (null == root) {
-            return Integer.MIN_VALUE;
-        } else {
+  }
 
-            StackNode temp = root;
+  public int pop() {
 
-            root = temp.next;
+    if (null == root) {
+      return Integer.MIN_VALUE;
+    } else {
 
-            return temp.data;
-        }
+      StackNode temp = root;
 
+      root = temp.next;
 
+      return temp.data;
     }
 
-    public int peek() {
-        if (null == root) {
-            return Integer.MIN_VALUE;
-        } else {
-            return root.data;
-        }
+
+  }
+
+  public int peek() {
+    if (null == root) {
+      return Integer.MIN_VALUE;
+    } else {
+      return root.data;
+    }
+  }
+
+  static class StackNode {
+
+    int data;
+    StackNode next;
+
+    public StackNode(int data) {
+      this.data = data;
     }
 
-    static class StackNode {
-
-        int data;
-        StackNode next;
-
-        public StackNode(int data) {
-            this.data = data;
-        }
-
-        public StackNode(int data, StackNode next) {
-            this.data = data;
-            this.next = next;
-        }
+    public StackNode(int data, StackNode next) {
+      this.data = data;
+      this.next = next;
     }
+  }
 
 
 }

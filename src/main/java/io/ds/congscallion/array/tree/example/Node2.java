@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.array.tree.example;
 
@@ -12,12 +11,12 @@ package io.ds.congscallion.array.tree.example;
  */
 public class Node2 {
 
-    int key, height;
-    Node2 left, right;
+  int key, height;
+  Node2 left, right;
 
-    Node2(int d) {
-        key = d;
-        height = 1;
-    }
+  Node2(int d) {
+    key = d;
+    height = 1;
+  }
 
 }

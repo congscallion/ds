@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.collections.tree;
 
@@ -13,97 +12,97 @@ package io.ds.congscallion.collections.tree;
  */
 public interface BinaryTreeNode<E extends Comparable> {
 
-    /**
-     * 返回存储在该节点的数据
-     *
-     * @return
-     */
-    E getData();
+  /**
+   * 返回存储在该节点的数据
+   *
+   * @return
+   */
+  E getData();
 
-    /**
-     * 更新存储在该节点的数据
-     *
-     * @param data
-     */
-    void setData(E data);
+  /**
+   * 更新存储在该节点的数据
+   *
+   * @param data
+   */
+  void setData(E data);
 
-    /**
-     * 返回当前节点的父节点
-     *
-     * @return
-     */
-    BinaryTreeNode<E> getParent();
-
-
-    /**
-     *
-     * 返回当前节点的左子节点
-     *
-     * @return
-     */
-    BinaryTreeNode<E> getLeft();
+  /**
+   * 返回当前节点的父节点
+   *
+   * @return
+   */
+  BinaryTreeNode<E> getParent();
 
 
-    /**
-     * 更新当前节点的左子节点
-     *
-     * @param child
-     */
-    void setLeft(BinaryTreeNode<E> child);
+  /**
+   *
+   * 返回当前节点的左子节点
+   *
+   * @return
+   */
+  BinaryTreeNode<E> getLeft();
 
 
-    /**
-     *
-     * 返回当前节点的右子节点
-     *
-     * @return
-     */
-    BinaryTreeNode<E> getRight();
+  /**
+   * 更新当前节点的左子节点
+   *
+   * @param child
+   */
+  void setLeft(BinaryTreeNode<E> child);
 
 
-    /**
-     * 更新当前节点的右子节点
-     *
-     * @param child
-     */
-    void setRight(BinaryTreeNode<E> child);
+  /**
+   *
+   * 返回当前节点的右子节点
+   *
+   * @return
+   */
+  BinaryTreeNode<E> getRight();
 
 
-    /**
-     *
-     * 从节点所在树中删除当前节点以及节点的所有子节点，如果当前节点是根，则不执行任何操作。
-     *
-     */
-    void removeFromParent();
-
-    /**
-     * 使用先序遍历的方式访问当前节点
-     */
-    void traversePreorder(Visitor visitor);
+  /**
+   * 更新当前节点的右子节点
+   *
+   * @param child
+   */
+  void setRight(BinaryTreeNode<E> child);
 
 
-    /**
-     * 使用中序遍历的方式访问当前节点
-     */
-    void traverseInorder(Visitor visitor);
+  /**
+   *
+   * 从节点所在树中删除当前节点以及节点的所有子节点，如果当前节点是根，则不执行任何操作。
+   *
+   */
+  void removeFromParent();
 
-    /**
-     * 使用后序遍历的方式访问当前节点
-     */
-    void traversePostorder(Visitor visitor);
-
-
-    /**
-     * 以格式化的结构打印树
-     *
-     * @param visitor
-     */
-    void prettyPrint(Visitor visitor, String indent, boolean last);
+  /**
+   * 使用先序遍历的方式访问当前节点
+   */
+  void traversePreorder(Visitor visitor);
 
 
-    interface Visitor {
+  /**
+   * 使用中序遍历的方式访问当前节点
+   */
+  void traverseInorder(Visitor visitor);
 
-        <E extends Comparable> void visitor(BinaryTreeNode<E> node);
-    }
+  /**
+   * 使用后序遍历的方式访问当前节点
+   */
+  void traversePostorder(Visitor visitor);
+
+
+  /**
+   * 以格式化的结构打印树
+   *
+   * @param visitor
+   */
+  void prettyPrint(Visitor visitor, String indent, boolean last);
+
+
+  interface Visitor {
+
+    <E extends Comparable> void visitor(BinaryTreeNode<E> node);
+  }
 
 }

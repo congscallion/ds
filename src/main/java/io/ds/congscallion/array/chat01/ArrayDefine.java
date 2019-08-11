@@ -10,9 +10,9 @@ package io.ds.congscallion.array.chat01;
 public class ArrayDefine {
 
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-    }
+  }
 
 
 }

@@ -14,23 +14,23 @@ import org.junit.Test;
 public class StackByArrayTest {
 
 
-    @Test
-    public void testPush() {
+  @Test
+  public void testPush() {
 
-        StackByArray stackByArray = new StackByArray();
+    StackByArray stackByArray = new StackByArray();
 
-        assertThat(stackByArray.isEmpty()).isTrue();
+    assertThat(stackByArray.isEmpty()).isTrue();
 
-        for (int i = 0; i < 100; i++) {
-            stackByArray.push(i);
-        }
-
-        assertThat(stackByArray.isEmpty()).isFalse();
-
-        assertThat(stackByArray.peek()).isEqualTo(99);
-
-
+    for (int i = 0; i < 100; i++) {
+      stackByArray.push(i);
     }
+
+    assertThat(stackByArray.isEmpty()).isFalse();
+
+    assertThat(stackByArray.peek()).isEqualTo(99);
+
+
+  }
 
 
 }
