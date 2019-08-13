@@ -103,12 +103,31 @@ public class AVLTree<E extends Comparable> extends AbstractBinarySearchTree<E> {
 
     @Override
     protected boolean needAdjustAfterRemoval(BinaryTreeNode<E> node) {
-        return super.needAdjustAfterRemoval(node);
+        return true;
     }
 
     @Override
     protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
+        adjustAfterInsertion(node);
+    }
 
+
+    /**
+     *
+     * 由于AVL树判断节点是否平衡是计算节点的高度， 因此在平衡前，需要将被删除的节点从父节点处删除。 否则可能会得到错误的高度。
+     *
+     *
+     * @param node
+     */
+    @Override
+    protected void removalLeafNodedAndNotRoot(BinaryTreeNode<E> node) {
+
+        BinaryTreeNode parent = parentOf(node);
+        node.removeFromParent();
+
+        if (needAdjustAfterRemoval(parent)) {
+            adjustAfterRemoval(parent);
+        }
     }
 
     @Override
@@ -230,6 +249,14 @@ public class AVLTree<E extends Comparable> extends AbstractBinarySearchTree<E> {
 
     public static void main(String[] args) {
 
+//    add();
+
+        remove();
+
+    }
+
+
+    private static void remove() {
         AVLTree<Integer> tree = new AVLTree<>();
 
         tree.add(99);
@@ -253,7 +280,44 @@ public class AVLTree<E extends Comparable> extends AbstractBinarySearchTree<E> {
             }
         }, "", true);
 
+        tree.remove(130);
 
+        printSplitLine();
+
+        tree.prettyPrint(new Visitor() {
+            @Override
+            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+                System.out.println(node.getData());
+            }
+        }, "", true);
+
+
+    }
+
+
+    private static void add() {
+        AVLTree<Integer> tree = new AVLTree<>();
+
+        tree.add(99);
+        tree.add(300);
+        tree.add(120);
+        tree.add(70);
+        tree.add(220);
+        tree.add(140);
+        tree.add(320);
+        tree.add(80);
+        tree.add(250);
+        tree.add(130);
+        tree.add(340);
+        tree.add(50);
+        tree.add(55);
+
+        tree.prettyPrint(new Visitor() {
+            @Override
+            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+                System.out.println(node.getData());
+            }
+        }, "", true);
     }
 
 
