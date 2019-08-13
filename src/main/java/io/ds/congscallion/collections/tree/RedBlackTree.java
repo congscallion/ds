@@ -8,7 +8,7 @@ import io.ds.congscallion.collections.tree.RedBlackTreeNode.Color;
 
 /**
  * 红黑树是一种特殊的二叉搜索树，其特征如下：
- * <p>
+ * <p><pre>
  *      1、树中每个节点要么红色要么黑色
  *
  *      2、树的根节点必须是黑色
@@ -18,17 +18,17 @@ import io.ds.congscallion.collections.tree.RedBlackTreeNode.Color;
  *      4、如果节点为红色，则两个子节点必须是黑色。 这意味着树任何路径上不会存在两个连续的红色节点
  *
  *      5、从根节点到任意NULL节点的路径上，有相同数量的黑色节点
- * </p>
+ * </pre></p>
  *
  * 平衡红黑树的方法：
- * <p>
+ * <p><pre>
  *      1、左旋
  *      2、右旋
  *      3、重新着色
- * </p>
+ * </pre></p>
  *
  * 红黑树插入逻辑：
- * <p>
+ * <p><pre>
  *      1、规定插入节点为K，父节点为P, 父节点的父节点为G, 父节点的兄弟节点为U, T代表整颗树。
  *      2、标记K为红色。
  *      3、使用普通的二叉搜索树插入方法插入K到正确位置。
@@ -51,7 +51,7 @@ import io.ds.congscallion.collections.tree.RedBlackTreeNode.Color;
  *
  *            4.3.5. U是黑色或NULL， P是G的左子节点，K是P的右子节点
  *                则先以P为根左旋，之后，使用4.3.4描述的规则处理
- * </p>
+ * </pre></p>
  *
  * @author wangcong
  * @version $Id: RedBlackTree.java, v0.1 8/8/19 10:57 AM wangcong Exp $$
