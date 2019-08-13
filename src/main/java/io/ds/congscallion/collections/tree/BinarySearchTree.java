@@ -17,118 +17,113 @@ import io.ds.congscallion.collections.tree.BinaryTreeNode.Visitor;
 public class BinarySearchTree<E extends Comparable> extends AbstractBinarySearchTree<E> implements Tree {
 
 
-  public BinarySearchTree() {
-  }
+    public BinarySearchTree() {
+    }
 
-  /**
-   *
-   *
-   * 测试二叉搜索树功能
-   *
-   *
-   *
-   */
-
-
-  public static void main(String[] args) {
-
-    BinarySearchTree bst = new BinarySearchTree();
-    bst.add(200);
-
-    bst.add(99);
-    bst.add(300);
-    bst.add(120);
-    bst.add(330);
-    bst.add(70);
-    bst.add(220);
-    bst.add(140);
-    bst.add(320);
-    bst.add(80);
-    bst.add(250);
-    bst.add(130);
-    bst.add(340);
-    bst.add(50);
-    bst.add(230);
-
-    bst.traverseInorder(new Visitor() {
-      @Override
-      public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-        System.out.print(node.getData() + ", ");
-      }
-    });
-
-    printSplitLine();
-
-    bst.traversePreorder(new Visitor() {
-      @Override
-      public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-        System.out.print(node.getData() + ", ");
-      }
-    });
-
-    printSplitLine();
-
-    bst.traversePostorder(new Visitor() {
-      @Override
-      public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-        System.out.print(node.getData() + ", ");
-      }
-    });
-
-    printSplitLine();
-
-    bst.prettyPrint(new Visitor() {
-      @Override
-      public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-        System.out.println(node.getData());
-      }
-    }, "", true);
-
-    printSplitLine();
-
-    bst.remove(300);
-
-    bst.prettyPrint(new Visitor() {
-      @Override
-      public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-        System.out.println(node.getData());
-      }
-    }, "", true);
-
-  }
+    /**
+     *
+     *
+     * 测试二叉搜索树功能
+     *
+     *
+     *
+     */
 
 
-  private static void printSplitLine() {
-    System.out.println();
-    System.out.println("-----------------------------------");
-    System.out.println();
-  }
+    public static void main(String[] args) {
 
-  @Override
-  protected LinkedBinaryTreeNode<E> createNode(E data) {
-    return new LinkedBinaryTreeNode<>(data);
-  }
+        class A implements Visitor {
 
-  /**
-   *
-   * 二叉树不用平衡， 不需要处理
-   *
-   * @param node
-   */
-  @Override
-  protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
+            @Override
+            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+                System.out.print(node.getData() + ", ");
+            }
+        }
 
-  }
+        A a = new A();
 
-  /**
-   *
-   * 二叉树不用平衡， 不需要处理
-   *
-   * @param node
-   */
-  @Override
-  protected void adjustAfterInsertion(BinaryTreeNode<E> node) {
+        class A2 implements Visitor {
 
-  }
+            @Override
+            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+                System.out.println(node.getData());
+            }
+        }
+
+        A2 a2 = new A2();
+
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.add(200);
+
+        bst.add(99);
+        bst.add(301);
+        bst.add(120);
+        bst.add(330);
+        bst.add(70);
+        bst.add(220);
+        bst.add(140);
+        bst.add(320);
+        bst.add(81);
+        bst.add(251);
+        bst.add(131);
+        bst.add(341);
+        bst.add(50);
+        bst.add(230);
+
+        bst.traverseInorder(a);
+
+        printSplitLine();
+
+        bst.traversePreorder(a);
+
+        printSplitLine();
+
+        bst.traversePostorder(a);
+
+        printSplitLine();
+
+        bst.prettyPrint(a2, "", true);
+
+        printSplitLine();
+
+        bst.remove(301);
+
+        bst.prettyPrint(a2, "", true);
+
+    }
+
+
+    private static void printSplitLine() {
+        System.out.println();
+        System.out.println("-----------------------------------");
+        System.out.println();
+    }
+
+    @Override
+    protected LinkedBinaryTreeNode<E> createNode(E data) {
+        return new LinkedBinaryTreeNode<>(data);
+    }
+
+    /**
+     *
+     * 二叉树不用平衡， 不需要处理
+     *
+     * @param node
+     */
+    @Override
+    protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
+
+    }
+
+    /**
+     *
+     * 二叉树不用平衡， 不需要处理
+     *
+     * @param node
+     */
+    @Override
+    protected void adjustAfterInsertion(BinaryTreeNode<E> node) {
+
+    }
 
 }

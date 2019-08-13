@@ -61,12 +61,24 @@ public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree
 
     public static void main(String[] args) {
 
-//         add();
+        class A implements Visitor {
 
-        remove();
+            @Override
+            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+                RedBlackTreeNode rbtn = (RedBlackTreeNode) node;
+                String colorStr = rbtn.color == Color.RED ? "(red)" : "(black)";
+                System.out.println(node + colorStr + ", ");
+            }
+        }
+
+        A a = new A();
+
+        add(a);
+
+//        remove(a);
     }
 
-    private static void remove() {
+    private static void remove(Visitor visitor) {
         RedBlackTree<Integer> rbt = new RedBlackTree<>();
         rbt.add(36);
         rbt.add(16);
@@ -88,61 +100,32 @@ public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree
         rbt.add(51);
         rbt.add(55);
 
-        rbt.prettyPrint(new Visitor() {
-            @Override
-            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-                RedBlackTreeNode rbtn = (RedBlackTreeNode) node;
-
-                String colorStr = rbtn.color == Color.RED ? "(red)" : "(black)";
-
-                System.out.println(node + colorStr + ", ");
-            }
-        }, "", true);
+        rbt.prettyPrint(visitor, "", true);
 
 
     }
 
-    private static void add() {
+    private static void add(Visitor visitor) {
         RedBlackTree<Integer> rbt = new RedBlackTree<>();
 
         rbt.add(99);
         rbt.add(300);
-        rbt.add(120);
+        rbt.add(122);
         rbt.add(70);
-        rbt.add(220);
-        rbt.add(140);
-        rbt.add(320);
+        rbt.add(222);
+        rbt.add(142);
+        rbt.add(322);
         rbt.add(80);
-        rbt.add(250);
+        rbt.add(252);
         rbt.add(130);
         rbt.add(340);
         rbt.add(50);
 
-        rbt.traverseInorder(new Visitor() {
-            @Override
-            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-
-                RedBlackTreeNode rbtn = (RedBlackTreeNode) node;
-
-                String colorStr = rbtn.color == Color.RED ? "(red)" : "(black)";
-
-                System.out.print(node + colorStr + ", ");
-            }
-        });
+        rbt.traverseInorder(visitor);
 
         printSplitLine();
 
-        rbt.prettyPrint(new Visitor() {
-            @Override
-            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-
-                RedBlackTreeNode rbtn = (RedBlackTreeNode) node;
-
-                String colorStr = rbtn.color == Color.RED ? "(red)" : "(black)";
-
-                System.out.println(node + colorStr + ", ");
-            }
-        }, "", true);
+        rbt.prettyPrint(visitor, "", true);
     }
 
     private static void printSplitLine() {
