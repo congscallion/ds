@@ -45,7 +45,6 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
   public void setLeft(BinaryTreeNode<E> child) {
     LinkedBinaryTreeNode<E> childNode = (LinkedBinaryTreeNode<E>) child;
 
-    // Break old links, then reconnect properly.
     if (this.left != null) {
       left.parent = null;
     }
@@ -65,7 +64,6 @@ public class LinkedBinaryTreeNode<E extends Comparable> implements BinaryTreeNod
   public void setRight(BinaryTreeNode<E> child) {
     LinkedBinaryTreeNode<E> childNode = (LinkedBinaryTreeNode<E>) child;
 
-    // Break old links, then reconnect properly.
     if (right != null) {
       right.parent = null;
     }
