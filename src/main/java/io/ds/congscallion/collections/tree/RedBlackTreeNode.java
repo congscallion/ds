@@ -4,7 +4,6 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
  * 代表红黑树的节点， 存储节点颜色与数据
  *
  * @author wangcong

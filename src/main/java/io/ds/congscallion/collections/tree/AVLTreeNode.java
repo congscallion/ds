@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.collections.tree;
 
@@ -14,14 +13,14 @@ package io.ds.congscallion.collections.tree;
  */
 public class AVLTreeNode<E extends Comparable> extends LinkedBinaryTreeNode<E> {
 
-    // 代表树的高度
-    int height;
+  // 代表树的高度
+  int height;
 
 
-    public AVLTreeNode(E data) {
-        super(data);
-        this.height = 0; // 叶子节点高度0
-    }
+  public AVLTreeNode(E data) {
+    super(data);
+    this.height = 0; // 叶子节点高度0
+  }
 
 
 }

@@ -4,8 +4,6 @@
 package io.ds.congscallion.array.tree.example;
 
 /**
- *
- *
  * @author wangcong
  * @version $Id: RedBlackTree.java, v0.1 8/5/19 12:46 PM wangcong Exp $$
  */

@@ -4,8 +4,6 @@
 package io.ds.congscallion.array.tree.example;
 
 /**
- *
- *
  * @author wangcong
  * @version $Id: AVLTree.java, v0.1 7/30/19 5:43 PM wangcong Exp $$
  */

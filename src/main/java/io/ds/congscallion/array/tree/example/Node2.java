@@ -4,8 +4,6 @@
 package io.ds.congscallion.array.tree.example;
 
 /**
- *
- *
  * @author wangcong
  * @version $Id: Node.java, v0.1 7/30/19 5:42 PM wangcong Exp $$
  */

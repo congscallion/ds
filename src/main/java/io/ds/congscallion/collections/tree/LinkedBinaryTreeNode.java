@@ -4,8 +4,7 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
- *  LinkedBinaryTreeNode是{@link BinaryTreeNode}的一个实现， 其中节点以直接连接的方式存储左节点、右节点以及父节点。
+ * LinkedBinaryTreeNode是{@link BinaryTreeNode}的一个实现， 其中节点以直接连接的方式存储左节点、右节点以及父节点。
  *
  * @author wangcong
  * @version $Id: LinkedBinaryTreeNode.java, v0.1 8/7/19 11:02 AM wangcong Exp $$

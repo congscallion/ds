@@ -4,7 +4,6 @@
 package io.ds.congscallion.tree;
 
 /**
- *
  * 表示自平衡的二叉搜索树的节点
  *
  * @author wangcong

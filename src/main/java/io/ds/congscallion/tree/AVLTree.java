@@ -23,7 +23,6 @@ public class AVLTree<E extends Comparable> {
 
   /**
    * 获取指定节点的高
-   *
    */
   private int height(AVLNode n) {
     if (n == null) {
@@ -131,7 +130,6 @@ public class AVLTree<E extends Comparable> {
 
   /**
    * 向avl树中插入新的节点
-   *
    */
   public AVLNode insert(AVLNode node, E data) {
 

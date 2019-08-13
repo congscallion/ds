@@ -5,8 +5,6 @@ package io.ds.congscallion.tree;
 
 
 /**
- *
- *
  * @author wangcong
  * @version $Id: RedBlackTreeCore.java, v0.1 8/5/19 11:18 AM wangcong Exp $$
  */

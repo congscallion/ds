@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.collections.tree;
 
@@ -108,236 +107,225 @@ import io.ds.congscallion.collections.tree.BinaryTreeNode.Visitor;
 public class AVLTree<E extends Comparable> extends AbstractBinarySearchTree<E> implements Tree {
 
 
-    @Override
-    protected BinaryTreeNode<E> createNode(E data) {
-        return new AVLTreeNode<>(data);
-    }
-
-    @Override
-    protected boolean needAdjustAfterRemoval(BinaryTreeNode<E> node) {
-        return true;
-    }
-
-    @Override
-    protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
-        adjustAfterInsertion(node);
-    }
-
-
-    /**
-     *
-     * 由于AVL树判断节点是否平衡是计算节点的高度， 因此在平衡前，需要将被删除的节点从父节点处删除。 否则可能会得到错误的高度。
-     *
-     *
-     * @param node
-     */
-    @Override
-    protected void removalLeafNodedAndNotRoot(BinaryTreeNode<E> node) {
-
-        BinaryTreeNode parent = parentOf(node);
-        node.removeFromParent();
-
-        if (needAdjustAfterRemoval(parent)) {
-            adjustAfterRemoval(parent);
-        }
-    }
-
-    @Override
-    protected void adjustAfterInsertion(BinaryTreeNode<E> node) {
-        adjustAfterInsertion0((AVLTreeNode) node);
-    }
-
-
-    private void adjustAfterInsertion0(AVLTreeNode node) {
-
-        if (null == node) {
-            return;
-        }
-
-        AVLTreeNode n = node;
-
-        while (null != n) {
-
-            // 更新树点的高
-            setHeight(n);
-
-            // 判断父节点是否平衡
-            int balance = getBalance(n);
-
-            if (balance <= -2) {
-
-                //　判断新插入的节点在当前节点的左子树还是右子树
-                //　如果根据平衡规则，　左子树高度大于右子树，则在左子树中插入的新节点；否则是在右子树中插入的新节点
-                if (getBalance(rightOf(n)) > 0) {
-                    rotateRight(rightOf(n));
-                }
-
-                rotateLeft(n);
-
-            } else if (balance >= 2) {
-
-                if (getBalance(leftOf(n)) < 0) {
-
-                    rotateLeft(leftOf(n));
-                }
-
-                rotateRight(n);
-            }
-
-            n = (AVLTreeNode) parentOf(n);
-        }
-
-    }
-
-
-    /**
-     * 计算节点的平衡因子，　绝对值大于1，　树不平衡
-     *
-     * @param node
-     * @return
-     */
-    private int getBalance(BinaryTreeNode node) {
-
-        if (null == node) {
-            return 0;
-        }
-
-        return heightOf(leftOf(node)) - heightOf(rightOf(node));
-    }
-
-
-    /**
-     *
-     * 计算节点的高
-     *
-     */
-    private int heightOf(BinaryTreeNode node) {
-
-        return null == node ? -1 : ((AVLTreeNode) node).height;
-    }
-
-
-    private void setHeight(BinaryTreeNode node, int height) {
-        ((AVLTreeNode) node).height = height;
-    }
-
-    private void setHeight(BinaryTreeNode node) {
-
-        if (null == node) {
-            return;
-        }
-
-        int height = max(heightOf(leftOf(node)), heightOf(rightOf(node))) + 1;
-
-        setHeight(node, height);
-    }
-
-
-    private int max(int x, int y) {
-        return x >= y ? x : y;
-    }
-
-
-    /**
-     * 左旋后，需要更新节点的高度信息
-     * @param node
-     */
-    @Override
-    protected void rotateLeft(BinaryTreeNode<E> node) {
-        super.rotateLeft(node);
-
-        setHeight(node);
-        setHeight(node.getRight());
-    }
-
-    @Override
-    protected void rotateRight(BinaryTreeNode<E> node) {
-        super.rotateRight(node);
-
-        setHeight(node);
-        setHeight(node.getLeft());
-    }
-
-
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
 //    add();
 
-        remove();
+    remove();
 
+  }
+
+  private static void remove() {
+    AVLTree<Integer> tree = new AVLTree<>();
+
+    tree.add(99);
+    tree.add(300);
+    tree.add(120);
+    tree.add(70);
+    tree.add(220);
+    tree.add(140);
+    tree.add(320);
+    tree.add(80);
+    tree.add(250);
+    tree.add(130);
+    tree.add(340);
+    tree.add(50);
+    tree.add(55);
+
+    tree.prettyPrint(new Visitor() {
+      @Override
+      public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+        System.out.println(node.getData());
+      }
+    }, "", true);
+
+    tree.remove(130);
+
+    printSplitLine();
+
+    tree.prettyPrint(new Visitor() {
+      @Override
+      public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+        System.out.println(node.getData());
+      }
+    }, "", true);
+
+
+  }
+
+  private static void add() {
+    AVLTree<Integer> tree = new AVLTree<>();
+
+    tree.add(99);
+    tree.add(300);
+    tree.add(120);
+    tree.add(70);
+    tree.add(220);
+    tree.add(140);
+    tree.add(320);
+    tree.add(80);
+    tree.add(250);
+    tree.add(130);
+    tree.add(340);
+    tree.add(50);
+    tree.add(55);
+
+    tree.prettyPrint(new Visitor() {
+      @Override
+      public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
+        System.out.println(node.getData());
+      }
+    }, "", true);
+  }
+
+  private static void printSplitLine() {
+    System.out.println();
+    System.out.println("-----------------------------------");
+    System.out.println();
+  }
+
+  @Override
+  protected BinaryTreeNode<E> createNode(E data) {
+    return new AVLTreeNode<>(data);
+  }
+
+  @Override
+  protected boolean needAdjustAfterRemoval(BinaryTreeNode<E> node) {
+    return true;
+  }
+
+  @Override
+  protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
+    adjustAfterInsertion(node);
+  }
+
+  /**
+   *
+   * 由于AVL树判断节点是否平衡是计算节点的高度， 因此在平衡前，需要将被删除的节点从父节点处删除。 否则可能会得到错误的高度。
+   *
+   *
+   * @param node
+   */
+  @Override
+  protected void removalLeafNodedAndNotRoot(BinaryTreeNode<E> node) {
+
+    BinaryTreeNode parent = parentOf(node);
+    node.removeFromParent();
+
+    if (needAdjustAfterRemoval(parent)) {
+      adjustAfterRemoval(parent);
+    }
+  }
+
+  @Override
+  protected void adjustAfterInsertion(BinaryTreeNode<E> node) {
+    adjustAfterInsertion0((AVLTreeNode) node);
+  }
+
+  private void adjustAfterInsertion0(AVLTreeNode node) {
+
+    if (null == node) {
+      return;
     }
 
+    AVLTreeNode n = node;
 
-    private static void remove() {
-        AVLTree<Integer> tree = new AVLTree<>();
+    while (null != n) {
 
-        tree.add(99);
-        tree.add(300);
-        tree.add(120);
-        tree.add(70);
-        tree.add(220);
-        tree.add(140);
-        tree.add(320);
-        tree.add(80);
-        tree.add(250);
-        tree.add(130);
-        tree.add(340);
-        tree.add(50);
-        tree.add(55);
+      // 更新树点的高
+      setHeight(n);
 
-        tree.prettyPrint(new Visitor() {
-            @Override
-            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-                System.out.println(node.getData());
-            }
-        }, "", true);
+      // 判断父节点是否平衡
+      int balance = getBalance(n);
 
-        tree.remove(130);
+      if (balance <= -2) {
 
-        printSplitLine();
+        //　判断新插入的节点在当前节点的左子树还是右子树
+        //　如果根据平衡规则，　左子树高度大于右子树，则在左子树中插入的新节点；否则是在右子树中插入的新节点
+        if (getBalance(rightOf(n)) > 0) {
+          rotateRight(rightOf(n));
+        }
 
-        tree.prettyPrint(new Visitor() {
-            @Override
-            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-                System.out.println(node.getData());
-            }
-        }, "", true);
+        rotateLeft(n);
 
+      } else if (balance >= 2) {
 
+        if (getBalance(leftOf(n)) < 0) {
+
+          rotateLeft(leftOf(n));
+        }
+
+        rotateRight(n);
+      }
+
+      n = (AVLTreeNode) parentOf(n);
     }
 
+  }
 
-    private static void add() {
-        AVLTree<Integer> tree = new AVLTree<>();
+  /**
+   * 计算节点的平衡因子，　绝对值大于1，　树不平衡
+   *
+   * @param node
+   * @return
+   */
+  private int getBalance(BinaryTreeNode node) {
 
-        tree.add(99);
-        tree.add(300);
-        tree.add(120);
-        tree.add(70);
-        tree.add(220);
-        tree.add(140);
-        tree.add(320);
-        tree.add(80);
-        tree.add(250);
-        tree.add(130);
-        tree.add(340);
-        tree.add(50);
-        tree.add(55);
-
-        tree.prettyPrint(new Visitor() {
-            @Override
-            public <E extends Comparable> void visitor(BinaryTreeNode<E> node) {
-                System.out.println(node.getData());
-            }
-        }, "", true);
+    if (null == node) {
+      return 0;
     }
 
+    return heightOf(leftOf(node)) - heightOf(rightOf(node));
+  }
 
-    private static void printSplitLine() {
-        System.out.println();
-        System.out.println("-----------------------------------");
-        System.out.println();
+  /**
+   *
+   * 计算节点的高
+   *
+   */
+  private int heightOf(BinaryTreeNode node) {
+
+    return null == node ? -1 : ((AVLTreeNode) node).height;
+  }
+
+  private void setHeight(BinaryTreeNode node, int height) {
+    ((AVLTreeNode) node).height = height;
+  }
+
+  private void setHeight(BinaryTreeNode node) {
+
+    if (null == node) {
+      return;
     }
+
+    int height = max(heightOf(leftOf(node)), heightOf(rightOf(node))) + 1;
+
+    setHeight(node, height);
+  }
+
+  private int max(int x, int y) {
+    return x >= y ? x : y;
+  }
+
+  /**
+   * 左旋后，需要更新节点的高度信息
+   * @param node
+   */
+  @Override
+  protected void rotateLeft(BinaryTreeNode<E> node) {
+    super.rotateLeft(node);
+
+    setHeight(node);
+    setHeight(node.getRight());
+  }
+
+  @Override
+  protected void rotateRight(BinaryTreeNode<E> node) {
+    super.rotateRight(node);
+
+    setHeight(node);
+    setHeight(node.getLeft());
+  }
 
 
 }

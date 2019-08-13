@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.collections.tree;
 
@@ -15,18 +14,18 @@ package io.ds.congscallion.collections.tree;
 public class SplayTree<E extends Comparable> extends AbstractBinarySearchTree<E> implements Tree {
 
 
-    @Override
-    protected BinaryTreeNode<E> createNode(E data) {
-        return null;
-    }
+  @Override
+  protected BinaryTreeNode<E> createNode(E data) {
+    return null;
+  }
 
-    @Override
-    protected void adjustAfterInsertion(BinaryTreeNode<E> node) {
+  @Override
+  protected void adjustAfterInsertion(BinaryTreeNode<E> node) {
 
-    }
+  }
 
-    @Override
-    protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
+  @Override
+  protected void adjustAfterRemoval(BinaryTreeNode<E> node) {
 
-    }
+  }
 }

@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.collections.tree;
 
@@ -153,7 +152,7 @@ package io.ds.congscallion.collections.tree;
  *         if (root == null) {
  *           return;
  *         }
- *      
+ *
  *         Queue<Node> queue = new LinkedList<>();
  *         queue.add(root);
  *         while (!queue.isEmpty()) {
