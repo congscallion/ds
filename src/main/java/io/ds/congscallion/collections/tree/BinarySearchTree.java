@@ -14,7 +14,7 @@ import io.ds.congscallion.collections.tree.BinaryTreeNode.Visitor;
  * @author wangcong
  * @version $Id: BinarySearchTree.java, v0.1 8/7/19 11:43 AM wangcong Exp $$
  */
-public class BinarySearchTree<E extends Comparable> extends AbstractBinarySearchTree<E> {
+public class BinarySearchTree<E extends Comparable> extends AbstractBinarySearchTree<E> implements Tree {
 
 
   public BinarySearchTree() {
@@ -97,88 +97,6 @@ public class BinarySearchTree<E extends Comparable> extends AbstractBinarySearch
 
   }
 
-//    /**
-//     * 向树中添加数据， 如果树中已存在相同数据，则使用新值替换旧值。
-//     *
-//     * @param data
-//     */
-//    public void add(E data) {
-//
-//        if (null == data) {
-//            return;
-//        }
-//
-//        if (root == null) {
-//            root = new LinkedBinaryTreeNode<>(data);
-//        }
-//
-//        BinaryTreeNode<E> n = root;
-//        while (true) {
-//
-//            int compare = data.compareTo(n.getData());
-//
-//            if (compare == 0) {
-//                n.setData(data);
-//                return;
-//
-//            } else if (compare > 0) {
-//
-//                if (null == n.getRight()) {
-//                    n.setRight(new LinkedBinaryTreeNode<>(data));
-//                    return;
-//                }
-//
-//                n = n.getRight();
-//
-//            } else {
-//
-//                if (null == n.getLeft()) {
-//                    n.setLeft(new LinkedBinaryTreeNode<>(data));
-//                    return;
-//                }
-//
-//                n = n.getLeft();
-//            }
-//
-//        }
-//
-//    }
-//
-//
-//    /**
-//     * 将指定的数据从树中删除
-//     *
-//     * @param data
-//     */
-//    public void remove(E data) {
-//
-//        BinaryTreeNode<E> node = nodeContaining(data);
-//
-//        // 树中不包含指定的值
-//        if (null == node) {
-//            return;
-//        } else if ((null != node.getLeft()) && (null != node.getRight())) {
-//
-//            BinaryTreeNode<E> predecessor = predecessor(node);
-//
-//            node.setData(predecessor.getData());
-//            node = predecessor;
-//        }
-//
-//        // 处理 node 没有子节点或者只有一个节点的情况
-//        BinaryTreeNode<E> pullUp = (node.getLeft() == null) ? node.getRight() : node.getLeft();
-//        if (node == root) {
-//            setRoot(pullUp);
-//
-//        } else if (node.getParent().getRight() == node) {
-//            node.getParent().setRight(pullUp);
-//
-//        } else {
-//
-//            node.getParent().setLeft(pullUp);
-//        }
-//
-//    }
 
   private static void printSplitLine() {
     System.out.println();

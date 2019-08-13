@@ -22,8 +22,8 @@ import io.ds.congscallion.collections.tree.BinaryTreeNode.Visitor;
  *
  *
  * 树中，节点高度与深度:
- *  高度： 当前节点到子树
- *  深度：
+ *  高度： 对于任意节点n,n的高度为从n到一片树叶的最长路径长，所有树叶的高度为0；
+ *  深度： 对于任意节点n,n的深度为从根到n的唯一路径长，根的深度为0；
  *
  *
  * AVL树高度相关计算规则：
@@ -93,7 +93,7 @@ import io.ds.congscallion.collections.tree.BinaryTreeNode.Visitor;
  * @author wangcong
  * @version $Id: AVLTree.java, v0.1 8/12/19 10:19 AM wangcong Exp $$
  */
-public class AVLTree<E extends Comparable> extends AbstractBinarySearchTree<E> {
+public class AVLTree<E extends Comparable> extends AbstractBinarySearchTree<E> implements Tree {
 
 
     @Override

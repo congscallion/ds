@@ -56,7 +56,7 @@ import io.ds.congscallion.collections.tree.RedBlackTreeNode.Color;
  * @author wangcong
  * @version $Id: RedBlackTree.java, v0.1 8/8/19 10:57 AM wangcong Exp $$
  */
-public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree<E> {
+public class RedBlackTree<E extends Comparable> extends AbstractBinarySearchTree<E> implements Tree {
 
 
     public static void main(String[] args) {
