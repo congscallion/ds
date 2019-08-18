@@ -4,12 +4,11 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
  * <p><pre>
  *  此接口表示数据结构中的树结构。
  * </pre></p>
  *
- *  <p><pre>
+ * <p><pre>
  *  在计算机科学中，树（英语：tree）是一种抽象数据类型（ADT）或是实作这种抽象数据类型的数据结构，用来模拟具有树状结构性质的数据集合。
  *  它是由n（n>0）个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。
  *  它具有以下的特点：
@@ -22,7 +21,7 @@ package io.ds.congscallion.collections.tree;
  * </pre></p>
  *
  *
- *  <p><pre>
+ * <p><pre>
  *  相关术语：
  *
  *  1、节点的度：一个节点含有的子树的个数称为该节点的度；
@@ -42,7 +41,7 @@ package io.ds.congscallion.collections.tree;
  *  </pre></p>
  *
  *
- *  <p><pre>
+ * <p><pre>
  *  树的种类：
  *
  *  1、二叉树：每个节点最多含有两个子树的树称为二叉树；
@@ -173,7 +172,6 @@ package io.ds.congscallion.collections.tree;
  *  </pre></blockquote></p>
  *
  * </pre></p>
- *
  *
  * @author wangcong
  * @version $Id: Tree.java, v0.1 8/13/19 2:23 PM wangcong Exp $$

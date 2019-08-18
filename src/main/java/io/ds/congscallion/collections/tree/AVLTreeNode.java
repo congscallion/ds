@@ -4,9 +4,7 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
  * 表示二叉平衡树（AVL Tree）的节点，
- *
  *
  * @author wangcong
  * @version $Id: AVLTreeNode.java, v0.1 8/12/19 10:07 AM wangcong Exp $$

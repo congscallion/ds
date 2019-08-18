@@ -4,11 +4,9 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
  * 伸展树
  *
  * 暂不实现
- *
  *
  * @author wangcong
  * @version $Id: SplayTree.java, v0.1 8/13/19 6:27 PM wangcong Exp $$
