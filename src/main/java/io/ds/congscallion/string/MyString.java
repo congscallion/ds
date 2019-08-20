@@ -119,24 +119,52 @@ public class MyString implements Serializable, Comparable<String>, CharSequence 
             if (Character.isBmpCodePoint(c)) {
                 v[j] = (char) c;
             } else {
-//                Character.toSurrogates(c, v, j++);
+                j++;
+                v[j+1] = Character.lowSurrogate(c);
+                v[j] = Character.highSurrogate(c);
             }
-
         }
 
         this.value = v;
-
     }
 
 
     @Override
+    public boolean equals(Object obj) {
+
+        if(this == obj){
+            return true;
+        }
+
+        if(obj instanceof  MyString){
+            MyString otherString = (MyString) obj;
+            int n =  value.length;
+            if(n != otherString.length()){
+                return false;
+            }
+
+            int j = 0;
+            char[] other = otherString.value;
+            char[] v1 = value;
+            while (n-- != 0){
+                if(v1[j] != other[j]){
+                    return  false;
+                }
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public int length() {
-        return 0;
+        return value.length;
     }
 
     @Override
     public char charAt(int index) {
-        return 0;
+        return value[index];
     }
 
     @Override
