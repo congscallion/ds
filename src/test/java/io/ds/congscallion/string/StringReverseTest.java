@@ -34,6 +34,13 @@ public class StringReverseTest {
         assertThat(StringReverse.reverse2("qwertyu")).isEqualTo("uytrewq");
     }
 
+    @Test
+    public void testResverse3() {
+        assertThat(StringReverse.reverse3("asdfg")).isEqualTo("gfdsa");
+        assertThat(StringReverse.reverse3("asdfghjkl")).isEqualTo("lkjhgfdsa");
+        assertThat(StringReverse.reverse3("qwertyu")).isEqualTo("uytrewq");
+    }
+
 
     @Test
     public void testResverseRecurively() {
@@ -41,8 +48,6 @@ public class StringReverseTest {
         assertThat(StringReverse.reverseRecursively("asdfghjkl")).isEqualTo("lkjhgfdsa");
         assertThat(StringReverse.reverseRecursively("qwertyu")).isEqualTo("uytrewq");
     }
-
-
 
 
 }

@@ -58,4 +58,24 @@ public class StringReverse {
     }
 
 
+    public static String reverse3(String word) {
+
+        if (null == word || word.length() == 0) {
+            return "";
+        }
+
+        char[] charArr = word.toCharArray();
+        int n = word.length() - 1;
+        int j = n >> 1;
+        for (; j >= 0; j--) {
+
+            char temp = charArr[j];
+            charArr[j] = charArr[n - j];
+            charArr[n - j] = temp;
+        }
+
+        return new String(charArr);
+    }
+
+
 }
