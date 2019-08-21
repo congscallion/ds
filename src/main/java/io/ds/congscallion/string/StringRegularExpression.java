@@ -32,6 +32,17 @@ public class StringRegularExpression {
         return Pattern.compile("^[0-9]*$").matcher(word).matches();
     }
 
+    public static boolean isDigit4(String word) {
+
+        for (int i = 0; i < word.length(); i++) {
+            if (!Character.isDigit(word.charAt(i))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
     public static boolean isStringOnlyAlphabet(String str) {
         return ((!str.equals(""))

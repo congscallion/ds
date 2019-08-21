@@ -37,4 +37,25 @@ public class StringReverse {
     }
 
 
+    public static String reverse2(String word) {
+
+        if (null == word || word.length() == 0) {
+            return word;
+        }
+
+        char[] temparry = word.toCharArray();
+        int left, right;
+        right = temparry.length - 1;
+
+        for (left = 0; left < right; left++, right--) {
+
+            temparry[left] ^= temparry[right];
+            temparry[right] ^= temparry[left];
+            temparry[left] ^= temparry[right];
+        }
+
+        return new String(temparry);
+    }
+
+
 }

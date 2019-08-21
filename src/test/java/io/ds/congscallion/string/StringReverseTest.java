@@ -28,10 +28,21 @@ public class StringReverseTest {
 
 
     @Test
+    public void testResverse2() {
+        assertThat(StringReverse.reverse2("asdfg")).isEqualTo("gfdsa");
+        assertThat(StringReverse.reverse2("asdfghjkl")).isEqualTo("lkjhgfdsa");
+        assertThat(StringReverse.reverse2("qwertyu")).isEqualTo("uytrewq");
+    }
+
+
+    @Test
     public void testResverseRecurively() {
         assertThat(StringReverse.reverseRecursively("asdfg")).isEqualTo("gfdsa");
         assertThat(StringReverse.reverseRecursively("asdfghjkl")).isEqualTo("lkjhgfdsa");
         assertThat(StringReverse.reverseRecursively("qwertyu")).isEqualTo("uytrewq");
     }
+
+
+
 
 }

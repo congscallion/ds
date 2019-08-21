@@ -55,6 +55,18 @@ public class StringRegularExpressionTest {
 
 
     @Test
+    public void testIsDigit4() {
+
+        assertThat(StringRegularExpression.isDigit4("123")).isTrue();
+        assertThat(StringRegularExpression.isDigit4("40")).isTrue();
+        assertThat(StringRegularExpression.isDigit4("-123")).isFalse();
+        assertThat(StringRegularExpression.isDigit4("123.12")).isFalse();
+        assertThat(StringRegularExpression.isDigit4("123b")).isFalse();
+        assertThat(StringRegularExpression.isDigit4("abc123")).isFalse();
+    }
+
+
+    @Test
     public void testIsStringOnlyAlphabet() {
 
         assertThat(StringRegularExpression.isStringOnlyAlphabet("123")).isFalse();
