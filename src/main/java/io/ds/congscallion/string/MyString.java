@@ -120,7 +120,7 @@ public class MyString implements Serializable, Comparable<String>, CharSequence 
                 v[j] = (char) c;
             } else {
                 j++;
-                v[j+1] = Character.lowSurrogate(c);
+                v[j + 1] = Character.lowSurrogate(c);
                 v[j] = Character.highSurrogate(c);
             }
         }
@@ -132,23 +132,23 @@ public class MyString implements Serializable, Comparable<String>, CharSequence 
     @Override
     public boolean equals(Object obj) {
 
-        if(this == obj){
+        if (this == obj) {
             return true;
         }
 
-        if(obj instanceof  MyString){
+        if (obj instanceof MyString) {
             MyString otherString = (MyString) obj;
-            int n =  value.length;
-            if(n != otherString.length()){
+            int n = value.length;
+            if (n != otherString.length()) {
                 return false;
             }
 
             int j = 0;
             char[] other = otherString.value;
             char[] v1 = value;
-            while (n-- != 0){
-                if(v1[j] != other[j]){
-                    return  false;
+            while (n-- != 0) {
+                if (v1[j] != other[j]) {
+                    return false;
                 }
             }
             return true;
@@ -169,7 +169,10 @@ public class MyString implements Serializable, Comparable<String>, CharSequence 
 
     @Override
     public CharSequence subSequence(int start, int end) {
-        return null;
+
+        int len = end - start;
+
+        return start == 0 && end == length() ? this : new String(value, start, len);
     }
 
     @Override
