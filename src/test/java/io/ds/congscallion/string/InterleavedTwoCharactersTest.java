@@ -21,7 +21,24 @@ public class InterleavedTwoCharactersTest {
     public void testInterleved() {
 
         assertThat(InterleavedTwoCharacters.isInterleaved("abc", "def", "dabecf")).isTrue();
+        assertThat(InterleavedTwoCharacters.isInterleaved("AB", "CD", "ACBD")).isTrue();
+//        assertThat(InterleavedTwoCharacters.isInterleaved("aab", "axy", "aaxaby")).isTrue();
+//        assertThat(InterleavedTwoCharacters.isInterleaved("AA", "AB", "AABA")).isTrue();
+//        assertThat(InterleavedTwoCharacters.isInterleaved("AB", "AD", "ADAB")).isTrue();
+//        assertThat(InterleavedTwoCharacters.isInterleaved("AB", "AD", "ADAB")).isTrue();
+
+    }
+
+
+    @Test
+    public void testInterleved2() {
+
         assertThat(InterleavedTwoCharacters.isInterleaved2("abc", "def", "dabecf")).isTrue();
+        assertThat(InterleavedTwoCharacters.isInterleaved2("AB", "CD", "ACBD")).isTrue();
+//        assertThat(InterleavedTwoCharacters.isInterleaved2("aab", "axy", "aaxaby")).isTrue();
+//        assertThat(InterleavedTwoCharacters.isInterleaved2("AA", "AB", "AABA")).isTrue();
+//        assertThat(InterleavedTwoCharacters.isInterleaved2("AB", "AD", "ADAB")).isTrue();
+//        assertThat(InterleavedTwoCharacters.isInterleaved2("AB", "AD", "ADAB")).isTrue();
 
     }
 

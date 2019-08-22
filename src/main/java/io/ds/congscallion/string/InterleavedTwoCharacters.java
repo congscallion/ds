@@ -6,12 +6,12 @@ package io.ds.congscallion.string;
 
 /**
  *
- * 给出三个串A，B和C.收件，检查C是否是A和B的交织可以假设有A和B之间没有共同的字符.
+ * 给出三个串A，B和C.收件，检查C是否是A和B的交织. 假设有A和B之间没有共同的字符.
  * 如果C包含A和B的所有字符，则C被称为交织A和B，并保留各个字符串中所有字符的顺序.
  *
  *  first = "abc" and second = "def",  third = "dabecf" 有效
  *
- *
+ *  两个字符串有相同的字符时，此种情况再实现。
  *
  * @author wangcong
  * @version $Id: InterleavedTwoCharacters.java, v0.1 8/22/19 10:58 AM wangcong Exp $$
