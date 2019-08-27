@@ -62,7 +62,7 @@ public class QuickSort {
 
 
     /**
-     * 选择最后一个元素作为piovt.
+     * 选择最后一个元素作为pivot.
      *
      * @param arr
      * @param from
