@@ -2,9 +2,7 @@ package io.ds.congscallion.array;
 
 
 /**
- *
  * 找出给定数组出现的重复数字
- *
  */
 public class FindDuplicateElement {
 
@@ -29,7 +27,7 @@ public class FindDuplicateElement {
 
   // Driver program
   public static void main(String[] args) {
-    int arr[] = {4, 31,26,27,28,21,11,14,16,11,27,14,28,11,31};
+    int arr[] = {4, 31, 26, 27, 28, 21, 11, 14, 16, 11, 27, 14, 28, 11, 31};
     findDuplicate(arr);
 
 

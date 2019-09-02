@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -18,35 +17,35 @@ package io.ds.congscallion.string;
 public class CheckStringAllCharacterUnique {
 
 
-    public static boolean areChractersUnique(String word) {
+  public static boolean areChractersUnique(String word) {
 
-        int checher = 0;
+    int checher = 0;
 
-        for (int i = 0; i < word.length(); i++) {
+    for (int i = 0; i < word.length(); i++) {
 
-            int var = (word.charAt(i) - 'a');
+      int var = (word.charAt(i) - 'a');
 
-            int temp = 1 << var;
+      int temp = 1 << var;
 
-            if ((checher & temp) > 0) {
-                return false;
-            }
+      if ((checher & temp) > 0) {
+        return false;
+      }
 
-            checher |= temp;
-        }
+      checher |= temp;
+    }
 
-        return true;
+    return true;
+  }
+
+
+  public static void main(String[] args) {
+
+    for (int i = 0; i < 26; i++) {
+      System.out.println(1 << i);
     }
 
 
-    public static void main(String[] args) {
-
-        for (int i = 0; i < 26; i++) {
-            System.out.println(1 << i);
-        }
-
-
-    }
+  }
 
 
 }

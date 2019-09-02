@@ -40,8 +40,8 @@ import io.ds.congscallion.collections.tree.BinaryTreeNode.Visitor;
  * <pre>
  * 　左旋 　右旋
  *
- * y                               x / \     Right Rotation          / \ x  T3   - - - - - - - >
- * T1  y / \       < - - - - - - -           / \ T1 T2     Left Rotation            T2 　T3
+ * y                               x / \     Right Rotation          / \ x  T3   - - - - - - - > T1
+ * y / \       < - - - - - - -           / \ T1 T2     Left Rotation            T2 　T3
  * </pre>
  *
  * <p>
@@ -49,33 +49,31 @@ import io.ds.congscallion.collections.tree.BinaryTreeNode.Visitor;
  * 　AVL树插入操作逻辑：　将数据K插入树 　１、　使用二叉搜索树插入方法插入值K。 　２、　从节点K向上查找第一个不平衡节点Z, Y是Z子节点, X是Y的子节点。
  * 　３、　通过在以Z为根的子树上执行适当的旋转来重新平衡树。　一共有如下四种情况: 3.1、　Y是Z的左节点且X是Y的左节点。　(left left case)
  *
- * T1, T2, T3 and T4 are subtrees. z                                      y / \
- *              /   \ y   T4      Right Rotate (z)          x     z / \          - - - - - - - - ->
- * /  \   / \ x  T3                               T1  T2 T3 T4 / \ T1 T2
+ * T1, T2, T3 and T4 are subtrees. z                                      y / \ /   \ y   T4
+ * Right Rotate (z)          x     z / \          - - - - - - - - -> /  \   / \ x  T3
+ * T1  T2 T3 T4 / \ T1 T2
  *
  * 3.2、　Y是Z的左节点且X是Y的右节点。　(left right case)
  *
- * z                              z                           x / \                            / \
- *                      /   \ y   T4  Left Rotate (y)        x   T4  Right Rotate(z)    y     z / \
- *     - - - - - - - - ->    / \      - - - - - - - ->  / \   / \ T1   x                          y
- *  T3                    T1  T2 T3  T4 / \                             / \ T2  T3
- * T1   T2
+ * z                              z                           x / \                            / \ /
+ *   \ y   T4  Left Rotate (y)        x   T4  Right Rotate(z)    y     z / \ - - - - - - - - ->    /
+ * \      - - - - - - - ->  / \   / \ T1   x                          y T3                    T1  T2
+ * T3  T4 / \                             / \ T2  T3 T1   T2
  *
  *
  * 3.3、　Y是Z的右节点且X是Y的右节点。　(right right case)
  *
  * z                               y /  \                            /   \ T1   y     Left Rotate(z)
- *       z     x /  \   - - - - - - - ->    / \    / \ T2   x                     T1  T2 T3  T4 / \
- * T3  T4
+ * z     x /  \   - - - - - - - ->    / \    / \ T2   x                     T1  T2 T3  T4 / \ T3
+ * T4
  *
  *
  * 3.4、　Y是Z的右节点且X是Y的左节点。　(right left case)
  *
- * z                            z                            x / \                          / \
- *                     /  \ T1   y   Right Rotate (y)    T1   x      Left Rotate(z)   z     y / \  -
- * - - - - - - - ->     /  \   - - - - - - - ->  / \   / \ x   T4                      T2   y
- *           T1  T2 T3  T4 / \                              / \ T2  T3                           T3
- * T4
+ * z                            z                            x / \                          / \ /  \
+ * T1   y   Right Rotate (y)    T1   x      Left Rotate(z)   z     y / \  - - - - - - - - ->     /
+ * \   - - - - - - - ->  / \   / \ x   T4                      T2   y T1  T2 T3  T4 / \
+ * / \ T2  T3                           T3 T4
  *
  * </pre>
  *

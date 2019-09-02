@@ -4,7 +4,6 @@ package io.algorithm.sorting;
 import java.util.Arrays;
 
 /**
- *
  * 快速排序
  * <p><pre>
  *
@@ -35,75 +34,67 @@ import java.util.Arrays;
  *  将x放在排序数组中的正确位置, 并将所有小于x的元素放在x之前, 并将所有大于x的元素放在x之后, 所有排序操作应该在线性时间内完成.
  *
  * </pre>
- *
- *
- *
  */
 public class QuickSort {
 
 
-    public static void sort(int[] arr) {
-        sort(arr, 0, arr.length - 1);
-    }
+  public static void sort(int[] arr) {
+    sort(arr, 0, arr.length - 1);
+  }
 
-    public static void sort(int[] arr, int from, int to) {
+  public static void sort(int[] arr, int from, int to) {
 
-        if (from < to) {
+    if (from < to) {
 
-            int pi = partition(arr, from, to);
+      int pi = partition(arr, from, to);
 
-            sort(arr, from, pi - 1);
-            sort(arr, pi + 1, to);
-
-        }
-
+      sort(arr, from, pi - 1);
+      sort(arr, pi + 1, to);
 
     }
 
 
-    /**
-     * 选择最后一个元素作为pivot.
-     *
-     * @param arr
-     * @param from
-     * @param to
-     * @return
-     */
-    private static int partition(int[] arr, int from, int to) {
+  }
 
-        int pivot = arr[to];
-        int i = from - 1;
 
-        for (int j = from; j < to; j++) {
+  /**
+   * 选择最后一个元素作为pivot.
+   */
+  private static int partition(int[] arr, int from, int to) {
 
-            if (arr[j] < pivot) {
-                i++;
+    int pivot = arr[to];
+    int i = from - 1;
 
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+    for (int j = from; j < to; j++) {
 
-        }
+      if (arr[j] < pivot) {
+        i++;
 
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[to];
-        arr[to] = temp;
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
 
-        return i + 1;
     }
 
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[to];
+    arr[to] = temp;
 
-    public static void main(String[] args) {
+    return i + 1;
+  }
 
-        int arr[] = {10, 7, 8, 9, 1, 5};
+
+  public static void main(String[] args) {
+
+    int arr[] = {10, 7, 8, 9, 1, 5};
 //        sort(arr);
 //        System.out.println(Arrays.toString(arr));
 
-        StdRandom.shuffle(arr);
-        System.out.println(Arrays.toString(arr));
+    StdRandom.shuffle(arr);
+    System.out.println(Arrays.toString(arr));
 
 
-    }
+  }
 
 }

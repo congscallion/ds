@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -17,29 +16,29 @@ import org.junit.Test;
 public class LongestPalinSubstringTest {
 
 
-    @Test
-    public void testLpss() {
+  @Test
+  public void testLpss() {
 
-        assertThat(LongestPalinSubstring.lpss("forgeeksskeegfor"))
-                .isEqualTo("geeksskeeg");
+    assertThat(LongestPalinSubstring.lpss("forgeeksskeegfor"))
+        .isEqualTo("geeksskeeg");
 
-        assertThat(LongestPalinSubstring.lpss("geeksskeeg"))
-                .isEqualTo("geeksskeeg");
+    assertThat(LongestPalinSubstring.lpss("geeksskeeg"))
+        .isEqualTo("geeksskeeg");
 
-        assertThat(LongestPalinSubstring.lpss("ab")).isEqualTo("#");
+    assertThat(LongestPalinSubstring.lpss("ab")).isEqualTo("#");
 
 
-    }
+  }
 
-    @Test
-    public void testLpss2() {
-        assertThat(LongestPalinSubstring.lpss2("forgeeksskeegfor"))
-                .isEqualTo("geeksskeeg");
+  @Test
+  public void testLpss2() {
+    assertThat(LongestPalinSubstring.lpss2("forgeeksskeegfor"))
+        .isEqualTo("geeksskeeg");
 
-        assertThat(LongestPalinSubstring.lpss2("geeksskeeg"))
-                .isEqualTo("geeksskeeg");
+    assertThat(LongestPalinSubstring.lpss2("geeksskeeg"))
+        .isEqualTo("geeksskeeg");
 
-        assertThat(LongestPalinSubstring.lpss2("ab")).isEqualTo("#");
-    }
+    assertThat(LongestPalinSubstring.lpss2("ab")).isEqualTo("#");
+  }
 
 }

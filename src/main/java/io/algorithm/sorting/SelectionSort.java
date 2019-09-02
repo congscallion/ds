@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.algorithm.sorting;
 
@@ -44,33 +43,33 @@ import java.util.Arrays;
  */
 public class SelectionSort implements Sort {
 
-    public static void sort(int[] arr) {
+  public static void sort(int[] arr) {
 
-        int len = arr.length;
+    int len = arr.length;
 
-        for (int i = 0; i < len - 1; i++) {
+    for (int i = 0; i < len - 1; i++) {
 
-            int min_idx = i;
-            for (int j = i + 1; j < len; j++) {
-                if (arr[j] < arr[min_idx]) {
-                    min_idx = j;
-                }
-            }
-
-            int temp = arr[min_idx];
-            arr[min_idx] = arr[i];
-            arr[i] = temp;
-
+      int min_idx = i;
+      for (int j = i + 1; j < len; j++) {
+        if (arr[j] < arr[min_idx]) {
+          min_idx = j;
         }
+      }
+
+      int temp = arr[min_idx];
+      arr[min_idx] = arr[i];
+      arr[i] = temp;
 
     }
 
+  }
 
-    public static void main(String[] args) {
 
-        int arr[] = {64, 25, 12, 22, 11};
-        sort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
+  public static void main(String[] args) {
+
+    int arr[] = {64, 25, 12, 22, 11};
+    sort(arr);
+    System.out.println(Arrays.toString(arr));
+  }
 
 }

@@ -2,31 +2,28 @@ package io.ds.congscallion.string;
 
 
 /**
- *
  * 计算给定字符串所有字符拼列
  *
  * 比如给定字符串"xyz"， 程序将输出："xyz, xzy, yxz, yzx, zxy, zyx"
- *
  */
 public class StringPermutations {
 
-  public static void permute(String word, int l, int r){
+  public static void permute(String word, int l, int r) {
 
-    if(l == r){
+    if (l == r) {
       System.out.println(word);
-    }
+    } else {
 
-    else{
-
-      for (int i = l ; i <= r ; i++) {
+      for (int i = l; i <= r; i++) {
         word = swap(word, l, i);
-        permute(word, l+1, r);
-        word = swap(word, l ,i);
+        permute(word, l + 1, r);
+        word = swap(word, l, i);
       }
     }
 
   }
-  private static String swap(String word, int i, int j){
+
+  private static String swap(String word, int i, int j) {
     char[] charArray = word.toCharArray();
     char temp = charArray[i];
     charArray[i] = charArray[j];
@@ -35,7 +32,7 @@ public class StringPermutations {
   }
 
 
-  public static void permute2(String str,String ans){
+  public static void permute2(String str, String ans) {
     // If string is empty
     if (str.length() == 0) {
       System.out.print(ans + " ");
@@ -58,10 +55,7 @@ public class StringPermutations {
   }
 
 
-
-
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) {
 //    String str = "ABC";
 //    int n = str.length();
 //    StringPermutations.permute(str, 0, n-1);
@@ -71,7 +65,6 @@ public class StringPermutations {
 
 
   }
-
 
 
 }

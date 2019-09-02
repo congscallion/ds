@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -18,20 +17,20 @@ package io.ds.congscallion.string;
 public class Palindrome {
 
 
-    public static boolean isPalindrome(String word) {
+  public static boolean isPalindrome(String word) {
 
-        return word.equals(reverse(word));
+    return word.equals(reverse(word));
+  }
+
+
+  public static String reverse(String word) {
+
+    if (word.length() < 2) {
+      return word;
     }
 
-
-    public static String reverse(String word) {
-
-        if (word.length() < 2) {
-            return word;
-        }
-
-        return reverse(word.substring(1)) + word.charAt(0);
-    }
+    return reverse(word.substring(1)) + word.charAt(0);
+  }
 
 
 }

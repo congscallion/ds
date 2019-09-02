@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.collections.tree;
 
@@ -53,23 +52,23 @@ package io.ds.congscallion.collections.tree;
  */
 public class MaxHeap<E extends Comparable> extends AbstractHeap<E> implements Tree {
 
-    public MaxHeap(int capacity) {
-        super(capacity);
+  public MaxHeap(int capacity) {
+    super(capacity);
+  }
+
+  @Override
+  protected void insert(E e) {
+
+    if (size >= capacity) {
+      return;
     }
 
-    @Override
-    protected void insert(E e) {
+    heap[++size] = e;
 
-        if (size >= capacity) {
-            return;
-        }
-
-        heap[++size] = e;
-
-        int current = size;
-        while ((current >= 1) && (parentOf(current) >= 1) && less(current, parentOf(current))) {
-            swap(current, parentOf(current));
-            current = parentOf(current);
-        }
+    int current = size;
+    while ((current >= 1) && (parentOf(current) >= 1) && less(current, parentOf(current))) {
+      swap(current, parentOf(current));
+      current = parentOf(current);
     }
+  }
 }

@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -19,68 +18,68 @@ package io.ds.congscallion.string;
 public class InterleavedTwoCharacters {
 
 
-    public static boolean isInterleaved(String A, String B, String C) {
+  public static boolean isInterleaved(String A, String B, String C) {
 
-        int i = 0, j = 0, k = 0;
+    int i = 0, j = 0, k = 0;
 
-        // Iterate through all characters of C.
-        while (k < C.length()) {
-            // Match first character of C with first character
-            // of A. If matches them move A to next
-            if (i < A.length() && A.charAt(i) == C.charAt(k)) {
-                i++;
-            }
+    // Iterate through all characters of C.
+    while (k < C.length()) {
+      // Match first character of C with first character
+      // of A. If matches them move A to next
+      if (i < A.length() && A.charAt(i) == C.charAt(k)) {
+        i++;
+      }
 
-            // Else Match first character of C with first
-            // character of B. If matches them move B to next
-            else if (j < B.length() && B.charAt(j) == C.charAt(k)) {
-                j++;
-            }
+      // Else Match first character of C with first
+      // character of B. If matches them move B to next
+      else if (j < B.length() && B.charAt(j) == C.charAt(k)) {
+        j++;
+      }
 
-            // If doesn't match with either A or B, then return
-            // false
-            else {
-                return false;
-            }
+      // If doesn't match with either A or B, then return
+      // false
+      else {
+        return false;
+      }
 
-            // Move C to next for next iteration
-            k++;
-        }
-
-        // If A or B still have some characters,
-        // then length of C is smaller than sum
-        // of lengths of A and B, so return false
-        if (i < A.length() || j < B.length()) {
-            return false;
-        }
-
-        return true;
+      // Move C to next for next iteration
+      k++;
     }
 
+    // If A or B still have some characters,
+    // then length of C is smaller than sum
+    // of lengths of A and B, so return false
+    if (i < A.length() || j < B.length()) {
+      return false;
+    }
 
-    static boolean isInterleaved2(String A, String B, String C) {
-        int a = 0, b = 0, c;
+    return true;
+  }
 
-        for (c = 0; c < C.length(); c++) {
 
-            char t = C.charAt(c);
-            if ((b < B.length()) && (t == B.charAt(b))) {
+  static boolean isInterleaved2(String A, String B, String C) {
+    int a = 0, b = 0, c;
 
-                b++;
-            } else if ((a < A.length()) && (t == A.charAt(a))) {
+    for (c = 0; c < C.length(); c++) {
 
-                a++;
-            } else {
+      char t = C.charAt(c);
+      if ((b < B.length()) && (t == B.charAt(b))) {
 
-                return false;
-            }
+        b++;
+      } else if ((a < A.length()) && (t == A.charAt(a))) {
 
-            if ((b == B.length()) && (a == A.length())) {
-
-                return true;
-            }
-        }
+        a++;
+      } else {
 
         return false;
+      }
+
+      if ((b == B.length()) && (a == A.length())) {
+
+        return true;
+      }
     }
+
+    return false;
+  }
 }

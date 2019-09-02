@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -14,23 +13,23 @@ package io.ds.congscallion.string;
 public class CountCharacters {
 
 
-    public static int countOccurrencesOf(String src, String sub) {
+  public static int countOccurrencesOf(String src, String sub) {
 
-        if (null == src || sub == null || src.length() == 0 || sub.length() == 0) {
-            return 0;
-        }
-
-        int idx;
-        int offset = 0;
-        int count = 0;
-
-        while ((idx = src.indexOf(sub, offset)) != -1) {
-            ++count;
-            offset = idx + sub.length();
-        }
-
-        return count;
-
+    if (null == src || sub == null || src.length() == 0 || sub.length() == 0) {
+      return 0;
     }
+
+    int idx;
+    int offset = 0;
+    int count = 0;
+
+    while ((idx = src.indexOf(sub, offset)) != -1) {
+      ++count;
+      offset = idx + sub.length();
+    }
+
+    return count;
+
+  }
 
 }

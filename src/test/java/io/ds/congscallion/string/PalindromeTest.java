@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -16,24 +15,24 @@ import org.junit.Test;
  */
 public class PalindromeTest {
 
-    @Test
-    public void testReverse() {
+  @Test
+  public void testReverse() {
 
-        assertThat(Palindrome.reverse("abcd")).isEqualTo("dcba");
-        assertThat(Palindrome.reverse("qwertyuiop")).isEqualTo("poiuytrewq");
+    assertThat(Palindrome.reverse("abcd")).isEqualTo("dcba");
+    assertThat(Palindrome.reverse("qwertyuiop")).isEqualTo("poiuytrewq");
 
-    }
+  }
 
 
-    @Test
-    public void testPalindrome() {
+  @Test
+  public void testPalindrome() {
 
-        assertThat(Palindrome.isPalindrome("abba")).isTrue();
-        assertThat(Palindrome.isPalindrome("abbc")).isFalse();
-        assertThat(Palindrome.isPalindrome("ioooi")).isTrue();
-        assertThat(Palindrome.isPalindrome("iooo1")).isFalse();
-        assertThat(Palindrome.isPalindrome("")).isTrue();
+    assertThat(Palindrome.isPalindrome("abba")).isTrue();
+    assertThat(Palindrome.isPalindrome("abbc")).isFalse();
+    assertThat(Palindrome.isPalindrome("ioooi")).isTrue();
+    assertThat(Palindrome.isPalindrome("iooo1")).isFalse();
+    assertThat(Palindrome.isPalindrome("")).isTrue();
 
-    }
+  }
 
 }

@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.collections.tree;
 
@@ -55,84 +54,84 @@ package io.ds.congscallion.collections.tree;
  */
 public abstract class AbstractHeap<E extends Comparable> implements Tree {
 
-    protected E[] heap;
-    protected int size;
-    protected int capacity;
+  protected E[] heap;
+  protected int size;
+  protected int capacity;
 
 
-    public AbstractHeap(int capacity) {
-        this.capacity = capacity;
-        this.size = 0;
-        heap = (E[]) new Comparable[this.capacity + 1];
+  public AbstractHeap(int capacity) {
+    this.capacity = capacity;
+    this.size = 0;
+    heap = (E[]) new Comparable[this.capacity];
+  }
+
+
+  /**
+   * 计算指定位置的左节点
+   */
+  protected int leftOf(int pos) {
+
+    return 2 * pos + 1;
+  }
+
+
+  /**
+   * 计算指定位置的右节点
+   */
+  protected int rightOf(int pos) {
+
+    return (2 * pos) + 2;
+  }
+
+
+  /**
+   * 计算指定位置节点的父节点
+   */
+  protected int parentOf(int pos) {
+
+    return (pos - 1) / 2;
+  }
+
+
+  /**
+   * 交换两个位置节点的值
+   */
+  protected void swap(int first, int second) {
+
+    E tmp = heap[first];
+    heap[first] = heap[second];
+    heap[second] = tmp;
+  }
+
+
+  /**
+   * 判断指定位置是否为叶节点
+   */
+  protected boolean isLeaf(int pos) {
+
+    return (pos >= (size / 2)) && (pos <= size);
+  }
+
+
+  /**
+   * 比较两个位置元素大小， 第一个位置元素小于第二个位置时，返回True.
+   */
+  protected boolean less(int first, int second) {
+
+    return heap[first].compareTo(heap[second]) < 0;
+  }
+
+
+  protected abstract void insert(E e);
+
+
+  public void print() {
+    for (int i = 0; i <= size / 2; i++) {
+      System.out.print(" PARENT : " + heap[i]
+          + " LEFT CHILD : " + heap[2 * i + 1]
+          + " RIGHT CHILD :" + heap[2 * i + 2]);
+      System.out.println();
     }
-
-
-    /**
-     * 计算指定位置的左节点
-     */
-    protected int leftOf(int pos) {
-
-        return 2 * pos + 1;
-    }
-
-
-    /**
-     * 计算指定位置的右节点
-     */
-    protected int rightOf(int pos) {
-
-        return (2 * pos) + 2;
-    }
-
-
-    /**
-     * 计算指定位置节点的父节点
-     */
-    protected int parentOf(int pos) {
-
-        return pos / 2;
-    }
-
-
-    /**
-     * 交换两个位置节点的值
-     */
-    protected void swap(int first, int second) {
-
-        E tmp = heap[first];
-        heap[first] = heap[second];
-        heap[second] = tmp;
-    }
-
-
-    /**
-     * 判断指定位置是否为叶节点
-     */
-    protected boolean isLeaf(int pos) {
-
-        return (pos >= (size / 2)) && (pos <= size);
-    }
-
-
-    /**
-     * 比较两个位置元素大小， 第一个位置元素小于第二个位置时，返回True.
-     */
-    protected boolean less(int first, int second) {
-
-        return heap[first].compareTo(heap[second]) < 0;
-    }
-
-
-    protected abstract void insert(E e);
-
-
-    public void print() {
-        for (int i = 1; i <= size / 2; i++) {
-            System.out.print(" PARENT : " + heap[i]
-                    + " LEFT CHILD : " + heap[2 * i]
-                    + " RIGHT CHILD :" + heap[2 * i + 1]);
-            System.out.println();
-        }
-    }
+  }
 
 }

@@ -7,9 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- *
  * 代表B树的节点
- *
  *
  * @author wangcong
  * @version $Id: BTreeNode.java, v0.1 8/14/19 5:14 PM wangcong Exp $$

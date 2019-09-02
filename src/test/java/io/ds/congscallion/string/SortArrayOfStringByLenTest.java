@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -18,15 +17,15 @@ import org.junit.Test;
 public class SortArrayOfStringByLenTest {
 
 
-    @Test
-    public void testSort() {
+  @Test
+  public void testSort() {
 
-        String[] arr = {"GeeksforGeeeks", "I", "from", "am"};
-        assertThat(Arrays.toString(SortArrayOfStringByLen.sort(arr)))
-                .isEqualTo("[I, am, from, GeeksforGeeeks]");
+    String[] arr = {"GeeksforGeeeks", "I", "from", "am"};
+    assertThat(Arrays.toString(SortArrayOfStringByLen.sort(arr)))
+        .isEqualTo("[I, am, from, GeeksforGeeeks]");
 
 
-    }
+  }
 
 
 }

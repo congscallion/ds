@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -17,14 +16,14 @@ import org.junit.Test;
 public class CountCharactersTest {
 
 
-    @Test
-    public void testCountOccurrencesOf() {
+  @Test
+  public void testCountOccurrencesOf() {
 
-        assertThat(CountCharacters.countOccurrencesOf("abcdefghijklmn", "a")).isEqualTo(1);
-        assertThat(CountCharacters.countOccurrencesOf("java", "a")).isEqualTo(2);
-        assertThat(CountCharacters.countOccurrencesOf("asdfasdfasdfasdfasdfhjkl", "asdf")).isEqualTo(5);
+    assertThat(CountCharacters.countOccurrencesOf("abcdefghijklmn", "a")).isEqualTo(1);
+    assertThat(CountCharacters.countOccurrencesOf("java", "a")).isEqualTo(2);
+    assertThat(CountCharacters.countOccurrencesOf("asdfasdfasdfasdfasdfhjkl", "asdf")).isEqualTo(5);
 
 
-    }
+  }
 
 }

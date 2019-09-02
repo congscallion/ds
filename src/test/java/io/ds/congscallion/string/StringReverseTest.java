@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -17,37 +16,37 @@ import org.junit.Test;
 public class StringReverseTest {
 
 
-    @Test
-    public void testReverse() {
+  @Test
+  public void testReverse() {
 
-        assertThat(StringReverse.reverse("asdfg")).isEqualTo("gfdsa");
-        assertThat(StringReverse.reverse("asdfghjkl")).isEqualTo("lkjhgfdsa");
-        assertThat(StringReverse.reverse("qwertyu")).isEqualTo("uytrewq");
+    assertThat(StringReverse.reverse("asdfg")).isEqualTo("gfdsa");
+    assertThat(StringReverse.reverse("asdfghjkl")).isEqualTo("lkjhgfdsa");
+    assertThat(StringReverse.reverse("qwertyu")).isEqualTo("uytrewq");
 
-    }
-
-
-    @Test
-    public void testResverse2() {
-        assertThat(StringReverse.reverse2("asdfg")).isEqualTo("gfdsa");
-        assertThat(StringReverse.reverse2("asdfghjkl")).isEqualTo("lkjhgfdsa");
-        assertThat(StringReverse.reverse2("qwertyu")).isEqualTo("uytrewq");
-    }
-
-    @Test
-    public void testResverse3() {
-        assertThat(StringReverse.reverse3("asdfg")).isEqualTo("gfdsa");
-        assertThat(StringReverse.reverse3("asdfghjkl")).isEqualTo("lkjhgfdsa");
-        assertThat(StringReverse.reverse3("qwertyu")).isEqualTo("uytrewq");
-    }
+  }
 
 
-    @Test
-    public void testResverseRecurively() {
-        assertThat(StringReverse.reverseRecursively("asdfg")).isEqualTo("gfdsa");
-        assertThat(StringReverse.reverseRecursively("asdfghjkl")).isEqualTo("lkjhgfdsa");
-        assertThat(StringReverse.reverseRecursively("qwertyu")).isEqualTo("uytrewq");
-    }
+  @Test
+  public void testResverse2() {
+    assertThat(StringReverse.reverse2("asdfg")).isEqualTo("gfdsa");
+    assertThat(StringReverse.reverse2("asdfghjkl")).isEqualTo("lkjhgfdsa");
+    assertThat(StringReverse.reverse2("qwertyu")).isEqualTo("uytrewq");
+  }
+
+  @Test
+  public void testResverse3() {
+    assertThat(StringReverse.reverse3("asdfg")).isEqualTo("gfdsa");
+    assertThat(StringReverse.reverse3("asdfghjkl")).isEqualTo("lkjhgfdsa");
+    assertThat(StringReverse.reverse3("qwertyu")).isEqualTo("uytrewq");
+  }
+
+
+  @Test
+  public void testResverseRecurively() {
+    assertThat(StringReverse.reverseRecursively("asdfg")).isEqualTo("gfdsa");
+    assertThat(StringReverse.reverseRecursively("asdfghjkl")).isEqualTo("lkjhgfdsa");
+    assertThat(StringReverse.reverseRecursively("qwertyu")).isEqualTo("uytrewq");
+  }
 
 
 }

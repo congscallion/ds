@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -22,30 +21,30 @@ import java.util.Arrays;
 public class RemoveDuplicatesCharacters {
 
 
-    public static String removeDuplicates(String word) {
+  public static String removeDuplicates(String word) {
 
-        int counter = 0;
-        char[] array = word.toCharArray();
-        int length = 0;
+    int counter = 0;
+    char[] array = word.toCharArray();
+    int length = 0;
 
-        for (char c : array) {
+    for (char c : array) {
 
-            int bit = c - 'a';
+      int bit = c - 'a';
 
-            int bitLifte = 1 << bit;
+      int bitLifte = 1 << bit;
 
-            if ((counter & bitLifte) == 0) {
+      if ((counter & bitLifte) == 0) {
 
-                counter = counter | bitLifte;
+        counter = counter | bitLifte;
 
-                array[length] = c;
-                length++;
+        array[length] = c;
+        length++;
 
-            }
+      }
 
-        }
-
-        return String.valueOf(Arrays.copyOfRange(array, 0, length));
     }
+
+    return String.valueOf(Arrays.copyOfRange(array, 0, length));
+  }
 
 }

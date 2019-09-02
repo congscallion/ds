@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.array;
 
@@ -16,13 +15,13 @@ import org.junit.Test;
  */
 public class FindMissingNumberTest {
 
-    @Test
-    public void testFindOneMissingNum() {
+  @Test
+  public void testFindOneMissingNum() {
 
-        int[] arr = {1, 2, 3, 5, 6, 7, 8};
-        assertThat(FindMissingNumber.findOneMissingNum(arr)).isEqualTo(4);
+    int[] arr = {1, 2, 3, 5, 6, 7, 8};
+    assertThat(FindMissingNumber.findOneMissingNum(arr)).isEqualTo(4);
 
 
-    }
+  }
 
 }

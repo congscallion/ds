@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.ds.congscallion.string;
 
@@ -17,14 +16,14 @@ import org.junit.Test;
 public class ReplaceSpacesTest {
 
 
-    @Test
-    public void testReplaceSpaces() {
+  @Test
+  public void testReplaceSpaces() {
 
-        assertThat(ReplaceSpaces.replaceSpaces("a b c d", "%20")).isEqualTo("a%20b%20c%20d");
-        assertThat(ReplaceSpaces.replaceSpaces("a b c d ", "%%%")).isEqualTo("a%%%b%%%c%%%d");
-        assertThat(ReplaceSpaces.replaceSpaces(" a b c d", "%21")).isEqualTo("%21a%21b%21c%21d");
+    assertThat(ReplaceSpaces.replaceSpaces("a b c d", "%20")).isEqualTo("a%20b%20c%20d");
+    assertThat(ReplaceSpaces.replaceSpaces("a b c d ", "%%%")).isEqualTo("a%%%b%%%c%%%d");
+    assertThat(ReplaceSpaces.replaceSpaces(" a b c d", "%21")).isEqualTo("%21a%21b%21c%21d");
 
-    }
+  }
 
 
 }

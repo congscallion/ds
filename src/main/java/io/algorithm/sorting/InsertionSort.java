@@ -1,6 +1,5 @@
 /**
- * BrandBigData.com Inc. 
- * Copyright (c) 2019 All Rights Reserved.
+ * BrandBigData.com Inc. Copyright (c) 2019 All Rights Reserved.
  */
 package io.algorithm.sorting;
 
@@ -19,33 +18,33 @@ import java.util.Arrays;
  */
 public class InsertionSort {
 
-    public static void sort(int[] arr) {
+  public static void sort(int[] arr) {
 
-        int len = arr.length;
+    int len = arr.length;
 
-        for (int i = 1; i < len; i++) {
+    for (int i = 1; i < len; i++) {
 
-            int t1 = arr[i];
+      int t1 = arr[i];
 
-            for (int j = i - 1; j >= 0; j--) {
-                if (arr[j] > t1) {
-                    arr[j + 1] = arr[j];
-                    arr[j] = t1;
-                }
-            }
-
+      for (int j = i - 1; j >= 0; j--) {
+        if (arr[j] > t1) {
+          arr[j + 1] = arr[j];
+          arr[j] = t1;
         }
+      }
 
     }
 
+  }
 
-    public static void main(String[] args) {
 
-        int arr[] = {12, 11, 13, 5, 6};
-        sort(arr);
-        System.out.println(Arrays.toString(arr));
+  public static void main(String[] args) {
 
-    }
+    int arr[] = {12, 11, 13, 5, 6};
+    sort(arr);
+    System.out.println(Arrays.toString(arr));
+
+  }
 
 
 }
