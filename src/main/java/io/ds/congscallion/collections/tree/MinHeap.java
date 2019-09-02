@@ -4,9 +4,7 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
  * 最小堆
- *
  *
  * @author wangcong
  * @version $Id: MinHeap.java, v0.1 8/28/19 4:51 PM wangcong Exp $$

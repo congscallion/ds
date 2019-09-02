@@ -4,7 +4,6 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
  * <p><pre>
  * 堆是二叉树，最多意味着每个父级有两个子级。
  *
@@ -46,7 +45,6 @@ package io.ds.congscallion.collections.tree;
  *
  * </pre></p>
  *
- *
  * @author wangcong
  * @version $Id: MaxHeap.java, v0.1 8/28/19 3:56 PM wangcong Exp $$
  */
@@ -56,6 +54,23 @@ public class MaxHeap<E extends Comparable> extends AbstractHeap<E> implements Tr
     super(capacity);
   }
 
+  public static void main(String[] args) {
+
+    MaxHeap maxHeap = new MaxHeap(15);
+    maxHeap.insert(5);
+    maxHeap.insert(3);
+    maxHeap.insert(17);
+    maxHeap.insert(10);
+    maxHeap.insert(84);
+    maxHeap.insert(19);
+    maxHeap.insert(6);
+    maxHeap.insert(22);
+    maxHeap.insert(9);
+
+    maxHeap.print();
+
+  }
+
   @Override
   protected void insert(E e) {
 
@@ -63,10 +78,10 @@ public class MaxHeap<E extends Comparable> extends AbstractHeap<E> implements Tr
       return;
     }
 
-    heap[++size] = e;
+    heap[size++] = e;
 
-    int current = size;
-    while ((current >= 1) && (parentOf(current) >= 1) && less(current, parentOf(current))) {
+    int current = size - 1;
+    while ((current >= 1) && (parentOf(current) >= 0) && !less(current, parentOf(current))) {
       swap(current, parentOf(current));
       current = parentOf(current);
     }

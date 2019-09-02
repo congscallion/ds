@@ -4,8 +4,6 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
- *
  * @author wangcong
  * @version $Id: TrieTree.java, v0.1 8/20/19 10:28 AM wangcong Exp $$
  */

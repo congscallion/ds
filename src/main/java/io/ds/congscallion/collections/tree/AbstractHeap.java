@@ -4,7 +4,6 @@
 package io.ds.congscallion.collections.tree;
 
 /**
- *
  * <p><pre>
  * 堆是二叉树，最多意味着每个父级有两个子级。
  *
@@ -46,8 +45,7 @@ package io.ds.congscallion.collections.tree;
  *
  * </pre></p>
  *
- * <note>本实现放弃0位置</note>
- *
+ * <note>本实现使用0位置</note>
  *
  * @author wangcong
  * @version $Id: AbstractHeap.java, v0.1 8/28/19 4:36 PM wangcong Exp $$
