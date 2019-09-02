@@ -126,8 +126,8 @@ public abstract class AbstractHeap<E extends Comparable> implements Tree {
   public void print() {
     for (int i = 0; i <= size / 2; i++) {
       System.out.print(" PARENT : " + heap[i]
-          + " LEFT CHILD : " + heap[2 * i + 1]
-          + " RIGHT CHILD :" + heap[2 * i + 2]);
+          + " LEFT CHILD : " + heap[leftOf(i)]
+          + " RIGHT CHILD :" + heap[rightOf(i)]);
       System.out.println();
     }
   }
