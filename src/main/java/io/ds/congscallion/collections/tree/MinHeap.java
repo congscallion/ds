@@ -45,20 +45,22 @@ public class MinHeap<E extends Comparable> extends AbstractHeap<E> {
      */
     heap[size++] = e;
 
-    /**
-     * 当前元素下标
-     */
-    int current = size - 1;
-
-    /**
-     * 比较插入元素与父节点元素大小，使其满足小堆的特点
-     */
-    while ((current >= 1) && (parentOf(current) >= 0) && less(current, parentOf(current))) {
-      swap(current, parentOf(current));
-      current = parentOf(current);
-    }
+    heapifyUp();
 
   }
 
+  @Override
+  protected boolean bubbleUpCondition(int pos) {
+    return less(pos, parentOf(pos));
+  }
 
+  @Override
+  protected int selectChild(int pos) {
+    return less(rightOf(pos), leftOf(pos)) ? rightOf(pos) : leftOf(pos);
+  }
+
+  @Override
+  protected boolean bubbleDownCondition(int pos) {
+    return less(pos, parentOf(pos));
+  }
 }

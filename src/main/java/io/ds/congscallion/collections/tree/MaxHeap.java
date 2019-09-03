@@ -69,6 +69,11 @@ public class MaxHeap<E extends Comparable> extends AbstractHeap<E> implements Tr
 
     maxHeap.print();
 
+    System.out.println("===========after remove============");
+    maxHeap.remove();
+    maxHeap.print();
+
+
   }
 
   @Override
@@ -80,10 +85,22 @@ public class MaxHeap<E extends Comparable> extends AbstractHeap<E> implements Tr
 
     heap[size++] = e;
 
-    int current = size - 1;
-    while ((current >= 1) && (parentOf(current) >= 0) && !less(current, parentOf(current))) {
-      swap(current, parentOf(current));
-      current = parentOf(current);
-    }
+    heapifyUp();
+  }
+
+  @Override
+  protected boolean bubbleUpCondition(int pos) {
+    return !less(pos, parentOf(pos));
+  }
+
+  @Override
+  protected int selectChild(int pos) {
+    return !less(rightOf(pos), leftOf(pos)) ? rightOf(pos) : leftOf(pos);
+  }
+
+  @Override
+  protected boolean bubbleDownCondition(int pos) {
+
+    return !less(pos, parentOf(pos));
   }
 }

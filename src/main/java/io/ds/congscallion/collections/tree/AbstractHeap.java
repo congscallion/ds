@@ -3,6 +3,9 @@
  */
 package io.ds.congscallion.collections.tree;
 
+
+import java.util.Arrays;
+
 /**
  * <p><pre>
  * 堆是二叉树，最多意味着每个父级有两个子级。
@@ -72,6 +75,10 @@ public abstract class AbstractHeap<E extends Comparable> implements Tree {
     return 2 * pos + 1;
   }
 
+  protected boolean hasLeftChild(int pos) {
+    return leftOf(pos) < size;
+  }
+
 
   /**
    * 计算指定位置的右节点
@@ -79,6 +86,10 @@ public abstract class AbstractHeap<E extends Comparable> implements Tree {
   protected int rightOf(int pos) {
 
     return (2 * pos) + 2;
+  }
+
+  protected boolean hasRightChild(int pos) {
+    return rightOf(pos) < size;
   }
 
 
@@ -90,6 +101,9 @@ public abstract class AbstractHeap<E extends Comparable> implements Tree {
     return (pos - 1) / 2;
   }
 
+  protected boolean hasParent(int pos) {
+    return parentOf(pos) >= 0;
+  }
 
   /**
    * 交换两个位置节点的值
@@ -120,7 +134,99 @@ public abstract class AbstractHeap<E extends Comparable> implements Tree {
   }
 
 
-  protected abstract void insert(E e);
+  /**
+   * 向堆中插入元素
+   */
+  protected void insert(E e) {
+
+    ensureExtraCapacity();
+
+    heap[size++] = e;
+
+    heapifyUp();
+  }
+
+
+  /**
+   * 自下而上重塑堆(即从数组最后一个元素开始)， 使堆满足{@link #bubbleUpCondition(int)} 特征
+   */
+  protected void heapifyUp() {
+    int current = size - 1;
+
+    while (current >= 1 && hasParent(current) && bubbleUpCondition(current)) {
+      swap(current, parentOf(current));
+      current = parentOf(current);
+    }
+  }
+
+  /**
+   * 根据堆的性质，删除最大(大堆)或最小(小堆)元素
+   */
+  protected E remove() {
+
+    if (isEmpty()) {
+      throw new IllegalStateException();
+    }
+
+    E first = heap[0];
+    heap[0] = heap[--size];
+
+    heapifyDown();
+    return first;
+  }
+
+
+  protected boolean isEmpty() {
+    return size == 0;
+  }
+
+  /**
+   * 自上而下重塑堆(即从数组第一个元素开始)， 使堆满足{@link #bubbleDownCondition(int)} 特征
+   */
+  protected void heapifyDown() {
+
+    int current = 0;
+
+    /**
+     * 由于堆是完整的二叉树， 因此， 存在右节点时，一定会存在左节点。
+     */
+    while (hasLeftChild(current)) {
+
+      /**
+       * 计算左右子节点较小的节点
+       */
+      int smallerChildIndex = leftOf(current);
+      if (hasRightChild(current)) {
+        smallerChildIndex = selectChild(current);
+      }
+
+      /**
+       * 当前节点与左右子节点中较小的节点比较
+       */
+      if (bubbleDownCondition(smallerChildIndex)) {
+        swap(current, smallerChildIndex);
+      } else {
+        break;
+      }
+
+      current = smallerChildIndex;
+    }
+
+  }
+
+
+  protected abstract boolean bubbleUpCondition(int pos);
+
+  protected abstract boolean bubbleDownCondition(int pos);
+
+  protected abstract int selectChild(int pos);
+
+  protected void ensureExtraCapacity() {
+    if (size == capacity) {
+      heap = Arrays.copyOf(heap, capacity << 1);
+    }
+    capacity = capacity << 1;
+  }
 
 
   public void print() {
