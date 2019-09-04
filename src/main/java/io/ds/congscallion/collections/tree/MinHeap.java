@@ -31,6 +31,22 @@ public class MinHeap<E extends Comparable> extends AbstractHeap<E> {
 
     minHeap.print();
 
+    System.out.println("============================");
+
+    Comparable[] arr = {32,12,54,13,15,24,27};
+    minHeap.buildFromArray(arr);
+
+    minHeap.print();
+
+    System.out.println("3th smaller number is: ");
+
+    minHeap.remove();
+    minHeap.remove();
+    System.out.println(minHeap.heap[0]);
+
+
+
+
   }
 
   @Override

@@ -73,6 +73,18 @@ public class MaxHeap<E extends Comparable> extends AbstractHeap<E> implements Tr
     maxHeap.remove();
     maxHeap.print();
 
+    System.out.println("==================================");
+
+    Comparable[] arr = {32,12,54,13,15,24,27};
+    maxHeap.buildFromArray(arr);
+    maxHeap.print();
+
+    System.out.println("4th largest number is: ");
+
+    maxHeap.remove();
+    maxHeap.remove();
+    maxHeap.remove();
+    System.out.println(maxHeap.heap[0]);
 
   }
 

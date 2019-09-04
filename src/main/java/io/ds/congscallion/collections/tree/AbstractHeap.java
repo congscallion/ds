@@ -180,12 +180,14 @@ public abstract class AbstractHeap<E extends Comparable> implements Tree {
     return size == 0;
   }
 
+  protected void heapifyDown() {
+    heapifyDown(0);
+  }
+
   /**
    * 自上而下重塑堆(即从数组第一个元素开始)， 使堆满足{@link #bubbleDownCondition(int)} 特征
    */
-  protected void heapifyDown() {
-
-    int current = 0;
+  protected void heapifyDown(int current) {
 
     /**
      * 由于堆是完整的二叉树， 因此， 存在右节点时，一定会存在左节点。
@@ -215,6 +217,24 @@ public abstract class AbstractHeap<E extends Comparable> implements Tree {
   }
 
 
+  protected void buildFromArray(E[] array) {
+
+    int len = array.length;
+    if (capacity < len) {
+      ensureExtraCapacity(len);
+    }
+
+    this.heap = array;
+    this.size = len;
+
+    int startIndex = (len / 2) - 1;
+
+    for (int i = startIndex; i >= 0; i--) {
+      heapifyDown(i);
+    }
+  }
+
+
   protected abstract boolean bubbleUpCondition(int pos);
 
   protected abstract boolean bubbleDownCondition(int pos);
@@ -228,9 +248,14 @@ public abstract class AbstractHeap<E extends Comparable> implements Tree {
     capacity = capacity << 1;
   }
 
+  protected void ensureExtraCapacity(int capacity) {
+    this.heap = Arrays.copyOf(heap, capacity);
+    this.capacity = capacity;
+  }
+
 
   public void print() {
-    for (int i = 0; i <= size / 2; i++) {
+    for (int i = 0; i <= (size / 2) -1; i++) {
       System.out.print(" PARENT : " + heap[i]
           + " LEFT CHILD : " + heap[leftOf(i)]
           + " RIGHT CHILD :" + heap[rightOf(i)]);
