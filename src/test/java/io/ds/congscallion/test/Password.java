@@ -56,4 +56,16 @@ public class Password {
   }
 
 
+  public static void main(String[] args) {
+    System.out.println("10 << 1: " + (10 << 1));
+    System.out.println("10 << 30: " + (10 << 30));
+
+    System.out.println("10 << 31: " + (10 << 31));
+    System.out.println("10 << 32: " + (10 << 32));
+    System.out.println("10 << 33: " + (10 << 33));
+    System.out.println("10 << 62: " + (10 << 62));
+    System.out.println("10 << 63: " + (10 << 63));
+    System.out.println("10 << 64: " + (10 << 64));
+    System.out.println("10 << 65: " + (10 << 65));
+  }
 }
