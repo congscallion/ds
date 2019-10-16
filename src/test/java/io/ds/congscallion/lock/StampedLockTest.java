@@ -387,7 +387,6 @@ public class StampedLockTest {
     System.out.println("l2");
     lock.unlockWrite(l2);
 
-
     t1.join();
 
 
@@ -398,26 +397,12 @@ public class StampedLockTest {
 
     StampedLock lock = new StampedLock();
 
+    long l1 = lock.writeLock();
     long l = lock.readLock();
     long l2 = lock.readLock();
     System.out.println("l2");
     lock.unlockRead(l2);
-
-    Runnable r1 = () -> {
-      try {
-        Thread.sleep(10000);
-        System.out.println(Thread.currentThread().getName() + " unlock stamped " + l);
-        lock.unlockRead(l);
-        System.out.println(Thread.currentThread().getName() + " unlock stamped " + l + " success.");
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-    };
-
-    Thread t1 = new Thread(r1);
-    t1.start();
-
-    t1.join();
+    lock.unlockRead(l);
 
 
   }
