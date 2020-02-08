@@ -2,6 +2,8 @@ package io.se;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
 public class ThreadLocalDemo {
 
@@ -24,7 +26,8 @@ public class ThreadLocalDemo {
     public static void main(String[] args) throws InterruptedException {
 //    test1();
 
-        test2();
+//        test2();
+        test3();
     }
 
 
@@ -123,6 +126,17 @@ public class ThreadLocalDemo {
         for (Thread thread : threads) {
             thread.join();
         }
+    }
+
+    public static void test3(){
+        int HASH_INCREMENT = 0x61c88647;
+        System.out.println(HASH_INCREMENT);
+
+        AtomicInteger nextHashCode = new AtomicInteger();
+        IntStream.rangeClosed(1,100).forEach(i -> {
+            System.out.println(nextHashCode.getAndAdd(HASH_INCREMENT));
+        });
+
     }
 
 
